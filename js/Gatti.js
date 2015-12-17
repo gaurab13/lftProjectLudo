@@ -4,8 +4,9 @@ function Gatti(){
 	var board= document.getElementsByClassName("gameboard")[0];
 	var that= this;
 	var tilewidth=30;
+	var step=0;
 	
-	var controlflag =1;
+	var controlflag =0;
 	var redgatti = {
 			child: [{
 				license: 0,
@@ -161,18 +162,25 @@ this.calldice= function(){
 
 		function rolldice(){
 			var gatti=[];
+			
+			if (controlflag==4){
+				controlflag=0;
+				
+			}
+			controlflag++;
 			var active = loop();
-			var step = getrandom();
+		 	step = getrandom();
 			console.log("you have got: " +step);
 			console.log("current active gatti is: " + active);
-				if (step<=6){
+				if (step==2 || step==4||step==6){
 				for (var i=1;i<5;i++){
-				gatti[i+1] = document.getElementById(active+i);
+				gatti[i] = document.getElementById(active+i);
 				// console.log("value of k is: " +k);
 				
-				gatti[i+1].style.borderColor= "white";
+				gatti[i].style.borderColor= "white";
 				if(controlflag==1){
 					redgatti.child[i-1].license=1;
+
 				}
 				else if(controlflag==2){
 					greengatti.child[i-1].license=1;
@@ -187,26 +195,31 @@ this.calldice= function(){
 				}
 			}
 			else{
-				for(var i=0;i<5;i++){
-				gatti[i+1] = document.getElementById(active+i);
+				for(var i=1;i<5;i++){
+				gatti[i] = document.getElementById(active+i);
+
 				if(controlflag==1){
 					if(redgatti.child[i-1].outflag==1){
 						redgatti.child[i-1].license=1;
+						gatti[i].style.borderColor= "white";
 					}
 				}
 				if(controlflag==2){
 					if(greengatti.child[i-1].outflag==1){
 						greengatti.child[i-1].license=1;
+						gatti[i].style.borderColor= "white";
 					}
 				}
 				if(controlflag==3){
 					if(yellowgatti.child[i-1].outflag==1){
 						yellowgatti.child[i-1].license=1;
+						gatti[i].style.borderColor= "white";
 					}
 				}
 				if(controlflag==4){
 					if(bluegatti.child[i-1].outflag==1){
 						bluegatti.child[i-1].license=1;
+						gatti[i].style.borderColor= "white";
 					}
 				}
 
@@ -232,27 +245,36 @@ this.calldice= function(){
 				var clicked = document.getElementById(currentid);
 				var clickedcolor= clicked.style.backgroundColor;
 		if(clickedcolor=="red"){
-			if ((redgatti.child[index-1].license==1)&&(redgatti.child[index-1].outflag==0)){
+			if (redgatti.child[index-1].license==1){
+				if(redgatti.child[index-1].outflag==0){				
 				movegattiout(clicked,index);
-				
+				redgatti.child[index-1].license=0;	
+				}
+				else{
+				movegatti(clicked,index);
+
+				}
 				for(var i=0;i<4;i++){
-					if(i!=index-1){
+						if(i!=index-1){
 						redgatti.child[i].license=0;
 						var ntclickedid= clickedcolor+(i+1);
 						
 						var ntclicked= document.getElementById(ntclickedid);
 						ntclicked.style.borderColor="black";
-					}
-				}
-				
-				}
-
+						}
+					}				
 			}
+		}
 
 		if(clickedcolor=="green"){
-			if ((greengatti.child[index-1].license==1)&&(greengatti.child[index-1].outflag==0)){
+			if (greengatti.child[index-1].license==1){
+				if(greengatti.child[index-1].outflag==0){
 				movegattiout(clicked,index);
-				
+				greengatti.child[index-1].license==0;
+				}
+				else{
+				movegatti(clicked,index);
+				}
 				for(var i=0;i<4;i++){
 					if(i!=index-1){
 						greengatti.child[i].license=0;
@@ -269,9 +291,14 @@ this.calldice= function(){
 
 
 		if(clickedcolor=="yellow"){
-			if ((yellowgatti.child[index-1].license==1)&&(yellowgatti.child[index-1].outflag==0)){
+			if (yellowgatti.child[index-1].license==1){
+				if(yellowgatti.child[index-1].outflag==0){
 				movegattiout(clicked,index);
-				
+				yellowgatti.child[index-1].license==0;
+				}
+				else{
+				movegatti(clicked,index);
+				}
 				for(var i=0;i<4;i++){
 					if(i!=index-1){
 						yellowgatti.child[i].license=0;
@@ -288,9 +315,14 @@ this.calldice= function(){
 
 
 		if(clickedcolor=="blue"){
-			if ((bluegatti.child[index-1].license==1)&&(bluegatti.child[index-1].outflag==0)){
+			if (bluegatti.child[index-1].license==1){
+				if(bluegatti.child[index-1].outflag==0){
 				movegattiout(clicked,index);
-				
+				bluegatti.child[index-1].license==0;
+				}
+				else{
+				movegatti(clicked,index);
+				}
 				for(var i=0;i<4;i++){
 					if(i!=index-1){
 						bluegatti.child[i].license=0;
@@ -304,6 +336,7 @@ this.calldice= function(){
 				}
 
 			}
+			
 		}
 
 		function loop(){
@@ -333,6 +366,7 @@ this.calldice= function(){
 				redgatti.child[pos-1].outflag=1;
 				element.style.left=tilewidth*1 + "px";
 				element.style.top=tilewidth*6 + "px";
+
 			}
 			if (element.style.backgroundColor=="green"){
 				greengatti.child[pos-1].outflag=1;
@@ -351,25 +385,23 @@ this.calldice= function(){
 			}
 
 			console.log("player out");
-			controlflag++;
+			// /controlflag++;
 			element.style.borderColor="black";
-			console.log("the current controlflag is: "+ controlflag);
-			if (controlflag==5){
-				controlflag=1;
-				
-			}
+			console.log("the current controlflag was: "+ controlflag);
+		
 	}
 
 
 	
-	var movegatti = function(element){
+	var movegatti = function(element,value){
 
 		this.element=element;
-		this.pos = parseInt(element.style.left);
-		
-		var a= new Animate(element);
-		a.animate(pos,4);
-		controlflag++;
+
+		console.log("i want to move " +step+ "steps");
+		//var intervalid = setInterval(function());
+		/*var a= new Animate(element);
+		a.animate(pos,4);*/
+		element.style.borderColor="black";
 		
 		
 	}

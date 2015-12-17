@@ -1,8 +1,8 @@
-function Animate(element) {
-	this.el = element;
-	var that = this;
+function Animate() {
+	/*this.el = element;
+	var that = this;*/
 
-	this.animate = function(currentPos, step) {
+	/*this.animate = function(currentPos, step) {
 		var pixeltomove= step*30 + currentPos;
 		
 		var intervalId= setInterval(function(){
@@ -15,5 +15,5 @@ function Animate(element) {
 
 		},500);
 
-	}
+	}*/
 }

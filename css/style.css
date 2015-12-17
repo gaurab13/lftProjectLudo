@@ -15,7 +15,7 @@
 	min-height:450px;
 	background-color: #00BFFF;
 	margin:0 auto;
-
+	
 }
 .tiles{
 	height:30px;
@@ -23,7 +23,7 @@
 	background-color: white;
 	border:1px solid black;
 	position: absolute;
-	color:black;
+	
 }
 .gatti{
 	width:28px;
