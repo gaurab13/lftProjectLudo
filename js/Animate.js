@@ -68,18 +68,8 @@ this.animate= function(element1,val){
 
 
 }
-	/*this.animate = function(currentPos, step) {
-		var pixeltomove= step*30 + currentPos;
-		
-		var intervalId= setInterval(function(){
-			currentPos+=30;
-			element.style.left= currentPos + "px";
+this.hittest=function(){
+	console.log("hit test done");
+}
 
-			if(currentPos>= pixeltomove){
-				clearInterval(intervalId);
-			}
-
-		},500);
-
-	}*/
 }

@@ -24,6 +24,8 @@ function Gameboard(){
 
 		  		if(i <=5 && j <=5){
 		  			arr[i][j].style.backgroundColor= "#FC062F";
+		  			//arr[i][j].style.borderColor= "#FC062F";
+
 		  		}
 		  		if(i<=5 && j >=9){
 		  			arr[i][j].style.backgroundColor= "#00d11c";
@@ -34,8 +36,9 @@ function Gameboard(){
 		  		
 		  		}
 		  		if(i >=9 && j >=9){
-		  			arr[i][j].style.backgroundColor= "#fff238";
+		  			arr[i][j].style.backgroundColor= "#FFFF66";
 		  		}
+
 		  		if((j>0&&j<=5) && i==7){
 		  			arr[i][j].style.backgroundColor= "#FC062F";
 		  		}
@@ -46,11 +49,30 @@ function Gameboard(){
 		  			arr[i][j].style.backgroundColor= "#00ad99";
 		  		}
 		  		if((j>8&&j<=13) && i==7){
-		  			arr[i][j].style.backgroundColor= "#fff238";
+		  			arr[i][j].style.backgroundColor= "#FFFF66";
+		  		}
+		  		if((i>=6&&i<=8)&&(j>=6&&j<=8)){
+		  			arr[i][j].style.backgroundColor= "#8133ff";
 		  		}
 
+		  		if((i==6&&j==1)||(i==1&&j==8)||(i==13&&j==6)||(i==8&&j==13)){
+		  			arr[i][j].style.backgroundImage= "url(images/star.png)";
+		  			arr[i][j].style.backgroundPosition= "center center";
+		  			arr[i][j].style.backgroundRepeat= "no-repeat";
+		  			if(i==6&&j==1){
+		  			arr[i][j].style.backgroundColor= "#FC062F";
+		  			}
+		  			if(i==1&&j==8){
+		  			arr[i][j].style.backgroundColor= "#00d11c";
+		  			}
+		  			if(i==13&&j==6){
+		  			arr[i][j].style.backgroundColor= "#00ad99";
+		  			}
+		  			if(i==8&&j==13){
+		  			arr[i][j].style.backgroundColor= "#FFFF66";
+		  			}
+		  		}
 		  		
-
 		  	
 		  	count++;
 

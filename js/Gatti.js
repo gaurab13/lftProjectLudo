@@ -152,7 +152,7 @@ this.calldice= function(){
 				
 				
 
-				   rolldice();
+				   rolldice(dice);
 
 				});
 		
@@ -160,24 +160,37 @@ this.calldice= function(){
 
 
 
-		function rolldice(){
+		function rolldice(dice){
 			var gatti=[];
 			
 			if (controlflag==4){
 				controlflag=0;
 				
 			}
+
 			controlflag++;
 			var active = loop();
 		 	step = getrandom();
+		 	/*var intervalid1= setInterval(function(){
+
+		 	},200);
+		 	var intervalid2= setTimeout(function(){
+		 		dice.innerHTML= step;
+		 	},500);*/
+			dice.innerHTML= step;
+		 
 			console.log("you have got: " +step);
 			console.log("current active gatti is: " + active);
-				if (step==1 ||step==6||step==4){
+
+				if (step==1||step==6){
 				for (var i=1;i<5;i++){
 				gatti[i] = document.getElementById(active+i);
 				// console.log("value of k is: " +k);
 				
 				gatti[i].style.borderColor= "white";
+				
+				gatti[i].style.zIndex= "2";
+
 				if(controlflag==1){
 					redgatti.child[i-1].license=1;
 
@@ -202,24 +215,28 @@ this.calldice= function(){
 					if(redgatti.child[i-1].outflag==1){
 						redgatti.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
+						gatti[i].style.zIndex= "2";
 					}
 				}
 				if(controlflag==2){
 					if(greengatti.child[i-1].outflag==1){
 						greengatti.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
+						gatti[i].style.zIndex= "2";
 					}
 				}
 				if(controlflag==3){
 					if(yellowgatti.child[i-1].outflag==1){
 						yellowgatti.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
+						gatti[i].style.zIndex= "2";
 					}
 				}
 				if(controlflag==4){
 					if(bluegatti.child[i-1].outflag==1){
 						bluegatti.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
+						gatti[i].style.zIndex= "2";
 					}
 				}
 
@@ -261,6 +278,7 @@ this.calldice= function(){
 						
 						var ntclicked= document.getElementById(ntclickedid);
 						ntclicked.style.borderColor="black";
+						ntclicked.style.zIndex= "1";
 						}
 					}				
 			}
@@ -283,6 +301,7 @@ this.calldice= function(){
 						
 						var ntclicked= document.getElementById(ntclickedid);
 						ntclicked.style.borderColor="black";
+						ntclicked.style.zIndex= "1";
 						}
 					}
 	
@@ -308,6 +327,7 @@ this.calldice= function(){
 						
 						var ntclicked= document.getElementById(ntclickedid);
 						ntclicked.style.borderColor="black";
+						ntclicked.style.zIndex= "1";
 						}
 					}
 	
@@ -333,6 +353,7 @@ this.calldice= function(){
 						
 						var ntclicked= document.getElementById(ntclickedid);
 						ntclicked.style.borderColor="black";
+						ntclicked.style.zIndex= "1";
 						}
 					}
 	
@@ -391,6 +412,11 @@ this.calldice= function(){
 			// /controlflag++;
 			element.style.borderColor="black";
 			console.log("the current controlflag was: "+ controlflag);
+			if(step==1||step==6){
+			controlflag--;
+			console.log("your move again");
+}
+
 		
 	}
 
@@ -408,17 +434,24 @@ this.calldice= function(){
 			a.animate(element,val);
 			currentstep++;
 			if(currentstep==step+1){
+				a.hittest();
 				clearInterval(intervalid);
 			}
-		},500);
-
+		},200);
+		if(step==1||step==6){
+		controlflag--;
+		console.log("your move again");
+		}
 		element.style.borderColor="black";
-		
+		element.style.zIndex= "1";
 		
 	}
 
 	var getrandom= function(){
 		return Math.floor(Math.random() * (6 - 1) + 1);
 	}
+
+	
+		 	
 
 }
