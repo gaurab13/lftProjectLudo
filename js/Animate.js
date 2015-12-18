@@ -3,6 +3,7 @@ function Animate(element) {
 	this.el = element;
 	var that = this;
 	var tilewidth=30;
+	var initPosition = new InitialPosition();
 this.animate= function(element1,val){
 	var value =val;
 	var currentcolor= element1.style.backgroundColor;		
@@ -24,36 +25,50 @@ this.animate= function(element1,val){
 							var index= routeno.pathred.indexOf(count);
 							var nextindex= routeno.pathred[index+1];
 							console.log("next point is "+ nextindex + "count was "+count);
-							var board = document.getElementById(nextindex);
-							element1.style.left= parseInt(board.style.left)+"px";
-							element1.style.top= parseInt(board.style.top)+"px";
-
+							var tile = document.getElementById(nextindex);
+							var prevTile= document.getElementById(count);
+							element1.style.left= parseInt(tile.style.left)+"px";
+							element1.style.top= parseInt(tile.style.top)+"px";
+							prevTile.style.backgroundColor="gray";
+							tile.style.backgroundColor="purple";
 						}
 						if (currentcolor=="green"){
 							var index= routeno.pathgreen.indexOf(count);
 							var nextindex= routeno.pathgreen[index+1];
 							console.log("next point is "+ nextindex + "count was "+count);
-							var board = document.getElementById(nextindex);
-							element1.style.left= parseInt(board.style.left)+"px";
-							element1.style.top= parseInt(board.style.top)+"px";
+							var tile = document.getElementById(nextindex);
+							
+							element1.style.left= parseInt(tile.style.left)+"px";
+							element1.style.top= parseInt(tile.style.top)+"px";
+							var prevTile= document.getElementById(count);
+							prevTile.style.backgroundColor="gray";
+							tile.style.backgroundColor="purple";
 
 						}
 						if (currentcolor=="yellow"){
 							var index= routeno.pathyellow.indexOf(count);
 							var nextindex= routeno.pathyellow[index+1];
 							console.log("next point is "+ nextindex + "count was "+count);
-							var board = document.getElementById(nextindex);
-							element1.style.left= parseInt(board.style.left)+"px";
-							element1.style.top= parseInt(board.style.top)+"px";
+							var tile = document.getElementById(nextindex);
+							
+							element1.style.left= parseInt(tile.style.left)+"px";
+							element1.style.top= parseInt(tile.style.top)+"px";
+							var prevTile= document.getElementById(count);
+							prevTile.style.backgroundColor="gray";
+							tile.style.backgroundColor="purple";
 
 						}
 						if (currentcolor=="blue"){
 							var index= routeno.pathblue.indexOf(count);
 							var nextindex= routeno.pathblue[index+1];
 							console.log("next point is "+ nextindex + "count was "+count);
-							var board = document.getElementById(nextindex);
-							element1.style.left= parseInt(board.style.left)+"px";
-							element1.style.top= parseInt(board.style.top)+"px";
+							var tile = document.getElementById(nextindex);
+							
+							element1.style.left= parseInt(tile.style.left)+"px";
+							element1.style.top= parseInt(tile.style.top)+"px";
+							var prevTile= document.getElementById(count);
+							prevTile.style.backgroundColor="gray";
+							tile.style.backgroundColor="purple";
 
 						}
 
@@ -68,8 +83,92 @@ this.animate= function(element1,val){
 
 
 }
-this.hittest=function(){
-	console.log("hit test done");
+this.hittestForRed=function(element2){
+	if(element2.style.backgroundColor!="red"){
+		var left = parseInt(element2.style.left);
+		var top = parseInt(element2.style.top);
+	for(var k=1;k<5;k++){
+		var testSubject= document.getElementById("red"+k);
+		var testLeft= parseInt(testSubject.style.left);
+		var testTop= parseInt(testSubject.style.top);
+		if((left==testLeft)&&(top==testTop)){
+			var initx = initPosition.posRed.child[k-1].x;
+			var inity = initPosition.posRed.child[k-1].y;
+			testSubject.style.left= initx*30 + "px";
+			console.log("value of initx:" +initx);
+			testSubject.style.top= inity*30 + "px";
+			return ("red"+k);
+		}
+	
+		}	
+	}	
+
 }
+this.hittestForBlue=function(element2){
+	if(element2.style.backgroundColor!="blue"){
+		var left = parseInt(element2.style.left);
+		var top = parseInt(element2.style.top);
+	for(var k=1;k<5;k++){
+		var testSubject= document.getElementById("blue"+k);
+		var testLeft= parseInt(testSubject.style.left);
+		var testTop= parseInt(testSubject.style.top);
+		if((left==testLeft)&&(top==testTop)){
+			var initx = initPosition.posBlue.child[k-1].x;
+			var inity = initPosition.posBlue.child[k-1].y;
+			console.log("value of initx:" +initx);
+			testSubject.style.left= initx*30 + "px";
+			testSubject.style.top= inity*30 + "px";
+		return ("blue"+k);
+		}
+	
+		}	
+	}	
+
+}
+this.hittestForGreen=function(element2){
+	if(element2.style.backgroundColor!="green"){
+		var left = parseInt(element2.style.left);
+		var top = parseInt(element2.style.top);
+	for(var k=1;k<5;k++){
+		var testSubject= document.getElementById("green"+k);
+		var testLeft= parseInt(testSubject.style.left);
+		var testTop= parseInt(testSubject.style.top);
+		if((left==testLeft)&&(top==testTop)){
+			var initx = initPosition.posGreen.child[k-1].x;
+			var inity = initPosition.posGreen.child[k-1].y;
+			console.log("value of initx:" +initx);
+			testSubject.style.left= initx*30 + "px";
+			testSubject.style.top= inity*30 + "px";
+			return("green"+k);
+		}
+		
+		}	
+	}	
+
+}
+this.hittestForYellow=function(element2){
+	if(element2.style.backgroundColor!="yellow"){
+		var left = parseInt(element2.style.left);
+		var top = parseInt(element2.style.top);
+	for(var k=1;k<5;k++){
+		var testSubject= document.getElementById("yellow"+k);
+		var testLeft= parseInt(testSubject.style.left);
+		var testTop= parseInt(testSubject.style.top);
+		if((left==testLeft)&&(top==testTop)){
+			var initx = initPosition.posYellow.child[k-1].x;
+			var inity = initPosition.posYellow.child[k-1].y;
+			console.log("value of initx:" +initx);
+			testSubject.style.left= initx*30 + "px";
+			testSubject.style.top= inity*30 + "px";
+			return("yellow"+k);
+
+		}
+		}	
+	}	
+
+}
+
+
+
 
 }

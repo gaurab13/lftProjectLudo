@@ -87,7 +87,7 @@ function Gatti(){
 
 		var gatti= [];
 		var c1= c2= c3= c4=1;
-
+		
 		var i,j=0;
 		for (i=0;i<15;i++) {
 		gatti[i]= new Array();
@@ -98,6 +98,7 @@ function Gatti(){
 				gatti[i][j].setAttribute("class","gatti");
 				gatti[i][j].setAttribute("id","red"+ c1);
 				board.appendChild(gatti[i][j]);
+				
 				gatti[i][j].style.left=i*tilewidth +"px";
 				gatti[i][j].style.top=j*tilewidth +"px";
 				gatti[i][j].style.backgroundColor="red";
@@ -109,6 +110,7 @@ function Gatti(){
 				gatti[i][j].setAttribute("class","gatti");
 				gatti[i][j].setAttribute("id","blue"+c2);
 				board.appendChild(gatti[i][j]);
+				
 				gatti[i][j].style.left=i*tilewidth +"px";
 				gatti[i][j].style.top=j*tilewidth +"px";
 				gatti[i][j].style.backgroundColor="blue";
@@ -120,6 +122,7 @@ function Gatti(){
 				gatti[i][j].setAttribute("class","gatti");
 				gatti[i][j].setAttribute("id","green"+c3);
 				board.appendChild(gatti[i][j]);
+			
 				gatti[i][j].style.left=i*tilewidth +"px";
 				gatti[i][j].style.top=j*tilewidth +"px";
 				gatti[i][j].style.backgroundColor="green";
@@ -131,6 +134,7 @@ function Gatti(){
 				gatti[i][j].setAttribute("class","gatti");
 				gatti[i][j].setAttribute("id","yellow"+c4);
 				board.appendChild(gatti[i][j]);
+				
 				gatti[i][j].style.left=i*tilewidth +"px";
 				gatti[i][j].style.top=j*tilewidth +"px";
 				gatti[i][j].style.backgroundColor="yellow";
@@ -150,8 +154,6 @@ this.calldice= function(){
 		//controlflag++;
 		dice.addEventListener('click',function(event){
 				
-				
-
 				   rolldice(dice);
 
 				});
@@ -182,7 +184,7 @@ this.calldice= function(){
 			console.log("you have got: " +step);
 			console.log("current active gatti is: " + active);
 
-				if (step==1||step==6){
+				if (step==1||step==6||step==3){
 				for (var i=1;i<5;i++){
 				gatti[i] = document.getElementById(active+i);
 				// console.log("value of k is: " +k);
@@ -412,10 +414,10 @@ this.calldice= function(){
 			// /controlflag++;
 			element.style.borderColor="black";
 			console.log("the current controlflag was: "+ controlflag);
-			if(step==1||step==6){
+			if(step==1||step==6||step==3){
 			controlflag--;
 			console.log("your move again");
-}
+			}
 
 		
 	}
@@ -431,14 +433,20 @@ this.calldice= function(){
 
 		var intervalid = setInterval(function(){
 			var a = new Animate(board);
-			a.animate(element,val);
+			a.animate(element,step);
 			currentstep++;
 			if(currentstep==step+1){
-				a.hittest();
 				clearInterval(intervalid);
+				
+				
+				a.hittestForRed(element);
+				a.hittestForBlue(element);
+				a.hittestForGreen(element);
+				a.hittestForYellow(element);
+				
 			}
 		},200);
-		if(step==1||step==6){
+		if(step==1||step==6||step==3){
 		controlflag--;
 		console.log("your move again");
 		}
