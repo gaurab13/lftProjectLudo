@@ -172,7 +172,7 @@ this.calldice= function(){
 		 	step = getrandom();
 			console.log("you have got: " +step);
 			console.log("current active gatti is: " + active);
-				if (step==2 || step==4||step==6){
+				if (step==1 ||step==6||step==4){
 				for (var i=1;i<5;i++){
 				gatti[i] = document.getElementById(active+i);
 				// console.log("value of k is: " +k);
@@ -252,7 +252,7 @@ this.calldice= function(){
 				}
 				else{
 				movegatti(clicked,index);
-
+				redgatti.child[index-1].license=0;	
 				}
 				for(var i=0;i<4;i++){
 						if(i!=index-1){
@@ -274,6 +274,7 @@ this.calldice= function(){
 				}
 				else{
 				movegatti(clicked,index);
+				redgatti.child[index-1].license=0;	
 				}
 				for(var i=0;i<4;i++){
 					if(i!=index-1){
@@ -298,6 +299,7 @@ this.calldice= function(){
 				}
 				else{
 				movegatti(clicked,index);
+				redgatti.child[index-1].license=0;	
 				}
 				for(var i=0;i<4;i++){
 					if(i!=index-1){
@@ -322,6 +324,7 @@ this.calldice= function(){
 				}
 				else{
 				movegatti(clicked,index);
+				redgatti.child[index-1].license=0;	
 				}
 				for(var i=0;i<4;i++){
 					if(i!=index-1){
@@ -396,11 +399,19 @@ this.calldice= function(){
 	var movegatti = function(element,value){
 
 		this.element=element;
+		this.val= value;
+		var currentstep = 1;
+		console.log("i want to move " +step+ " steps");
 
-		console.log("i want to move " +step+ "steps");
-		//var intervalid = setInterval(function());
-		/*var a= new Animate(element);
-		a.animate(pos,4);*/
+		var intervalid = setInterval(function(){
+			var a = new Animate(board);
+			a.animate(element,val);
+			currentstep++;
+			if(currentstep==step+1){
+				clearInterval(intervalid);
+			}
+		},500);
+
 		element.style.borderColor="black";
 		
 		

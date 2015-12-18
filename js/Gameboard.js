@@ -20,10 +20,6 @@ function Gameboard(){
 		  		arr[i][j].style.left= j*tilewidth + "px";
 		  		arr[i][j].style.top= i*tilewidth + "px";
 		  		
-		  		
-		  		
-		  		
-
 		  		board.appendChild(arr[i][j]);
 
 		  		if(i <=5 && j <=5){
