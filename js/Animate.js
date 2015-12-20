@@ -4,6 +4,7 @@ function Animate(element) {
 	var that = this;
 	var tilewidth=30;
 	var initPosition = new InitialPosition();
+	
 this.animate= function(element1,val){
 	var value =val;
 	var currentcolor= element1.style.backgroundColor;		
@@ -29,8 +30,8 @@ this.animate= function(element1,val){
 							var prevTile= document.getElementById(count);
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
-							prevTile.style.backgroundColor="gray";
-							tile.style.backgroundColor="purple";
+							//prevTile.style.backgroundColor="gray";
+							//tile.style.backgroundColor="purple";
 						}
 						if (currentcolor=="green"){
 							var index= routeno.pathgreen.indexOf(count);
@@ -41,8 +42,8 @@ this.animate= function(element1,val){
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
 							var prevTile= document.getElementById(count);
-							prevTile.style.backgroundColor="gray";
-							tile.style.backgroundColor="purple";
+							//prevTile.style.backgroundColor="gray";
+							//tile.style.backgroundColor="purple";
 
 						}
 						if (currentcolor=="yellow"){
@@ -54,8 +55,8 @@ this.animate= function(element1,val){
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
 							var prevTile= document.getElementById(count);
-							prevTile.style.backgroundColor="gray";
-							tile.style.backgroundColor="purple";
+							//prevTile.style.backgroundColor="gray";
+							//tile.style.backgroundColor="purple";
 
 						}
 						if (currentcolor=="blue"){
@@ -67,8 +68,8 @@ this.animate= function(element1,val){
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
 							var prevTile= document.getElementById(count);
-							prevTile.style.backgroundColor="gray";
-							tile.style.backgroundColor="purple";
+							//prevTile.style.backgroundColor="gray";
+							//tile.style.backgroundColor="purple";
 
 						}
 
@@ -87,20 +88,29 @@ this.hittestForRed=function(element2){
 	if(element2.style.backgroundColor!="red"){
 		var left = parseInt(element2.style.left);
 		var top = parseInt(element2.style.top);
+		console.log(left+":"+top);
 	for(var k=1;k<5;k++){
 		var testSubject= document.getElementById("red"+k);
 		var testLeft= parseInt(testSubject.style.left);
 		var testTop= parseInt(testSubject.style.top);
+		console.log(testLeft+":"+testTop);
 		if((left==testLeft)&&(top==testTop)){
+			console.log("HITTT");
 			var initx = initPosition.posRed.child[k-1].x;
 			var inity = initPosition.posRed.child[k-1].y;
 			testSubject.style.left= initx*30 + "px";
 			console.log("value of initx:" +initx);
 			testSubject.style.top= inity*30 + "px";
-			return ("red"+k);
+			return k;
+			//gatti.setPassive("red",k);
 		}
-	
-		}	
+		}
+		return 0;
+
+	}
+	else{
+		console.log("hereeeee in outer else");
+		return 0;
 	}	
 
 }
@@ -108,41 +118,61 @@ this.hittestForBlue=function(element2){
 	if(element2.style.backgroundColor!="blue"){
 		var left = parseInt(element2.style.left);
 		var top = parseInt(element2.style.top);
+		console.log(left+":"+top);
+
 	for(var k=1;k<5;k++){
 		var testSubject= document.getElementById("blue"+k);
 		var testLeft= parseInt(testSubject.style.left);
 		var testTop= parseInt(testSubject.style.top);
+		console.log(testLeft+":"+testTop);
 		if((left==testLeft)&&(top==testTop)){
+			console.log("HITTT");
 			var initx = initPosition.posBlue.child[k-1].x;
 			var inity = initPosition.posBlue.child[k-1].y;
 			console.log("value of initx:" +initx);
 			testSubject.style.left= initx*30 + "px";
 			testSubject.style.top= inity*30 + "px";
-		return ("blue"+k);
+			return k;
+			//gatti.setPassive("blue",k);
 		}
 	
-		}	
-	}	
-
+		}
+		return 0;	
+	}
+	else{
+		console.log("hereeeee in outer else");
+	return 0;	
+}
 }
 this.hittestForGreen=function(element2){
 	if(element2.style.backgroundColor!="green"){
 		var left = parseInt(element2.style.left);
 		var top = parseInt(element2.style.top);
+		console.log(left+":"+top);
 	for(var k=1;k<5;k++){
 		var testSubject= document.getElementById("green"+k);
 		var testLeft= parseInt(testSubject.style.left);
 		var testTop= parseInt(testSubject.style.top);
+			console.log(testLeft+":"+testTop);
 		if((left==testLeft)&&(top==testTop)){
+			console.log("HITTT");
 			var initx = initPosition.posGreen.child[k-1].x;
 			var inity = initPosition.posGreen.child[k-1].y;
 			console.log("value of initx:" +initx);
 			testSubject.style.left= initx*30 + "px";
 			testSubject.style.top= inity*30 + "px";
-			return("green"+k);
+			//gatti.setPassive("green",k);
+			return k;
 		}
 		
+		
 		}	
+		return 0;
+	}
+	else{
+		console.log("hereeeee in outer else");
+		return 0;
+		
 	}	
 
 }
@@ -150,21 +180,31 @@ this.hittestForYellow=function(element2){
 	if(element2.style.backgroundColor!="yellow"){
 		var left = parseInt(element2.style.left);
 		var top = parseInt(element2.style.top);
+			console.log(left+":"+top);
 	for(var k=1;k<5;k++){
 		var testSubject= document.getElementById("yellow"+k);
 		var testLeft= parseInt(testSubject.style.left);
 		var testTop= parseInt(testSubject.style.top);
+			console.log(testLeft+":"+testTop);
 		if((left==testLeft)&&(top==testTop)){
+			console.log("HITTT");
 			var initx = initPosition.posYellow.child[k-1].x;
 			var inity = initPosition.posYellow.child[k-1].y;
 			console.log("value of initx:" +initx);
 			testSubject.style.left= initx*30 + "px";
 			testSubject.style.top= inity*30 + "px";
-			return("yellow"+k);
+			return k;
+			//gatti.setPassive("yellow",k);
 
 		}
+		
 		}	
+		return 0;
 	}	
+	else{
+		console.log("hereeeee in outer else");
+		return 0;
+	}
 
 }
 

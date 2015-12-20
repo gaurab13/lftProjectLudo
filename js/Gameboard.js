@@ -19,25 +19,31 @@ function Gameboard(){
 
 		  		arr[i][j].style.left= j*tilewidth + "px";
 		  		arr[i][j].style.top= i*tilewidth + "px";
-		  		
+		  		arr[i][j].style.backgroundColor= "white";
 		  		board.appendChild(arr[i][j]);
 
 		  		if(i <=5 && j <=5){
-		  			arr[i][j].style.backgroundColor= "#FC062F";
-		  			//arr[i][j].style.borderColor= "#FC062F";
+		  			arr[i][j].style.backgroundColor= "#87CEFA";
+		  			arr[i][j].style.borderStyle="none";
 
 		  		}
 		  		if(i<=5 && j >=9){
-		  			arr[i][j].style.backgroundColor= "#00d11c";
-		  			
+		  			//arr[i][j].style.backgroundColor= "#00d11c";
+		  			arr[i][j].style.borderStyle="none";
+		  			arr[i][j].style.backgroundColor= "#87CEFA";
 		  		}
 		  		if(i >=9 && j <=5){
-		  			arr[i][j].style.backgroundColor= "#00ad99";
-		  		
+		  			//arr[i][j].style.backgroundColor= "#00ad99";
+		  			arr[i][j].style.borderStyle="none";
+		  			arr[i][j].style.backgroundColor= "#87CEFA";
 		  		}
 		  		if(i >=9 && j >=9){
-		  			arr[i][j].style.backgroundColor= "#FFFF66";
+		  			//arr[i][j].style.backgroundColor= "#FFFF66";
+		  			arr[i][j].style.borderStyle="none";
+		  			arr[i][j].style.backgroundColor= "#87CEFA";
 		  		}
+
+
 
 		  		if((j>0&&j<=5) && i==7){
 		  			arr[i][j].style.backgroundColor= "#FC062F";
@@ -52,8 +58,29 @@ function Gameboard(){
 		  			arr[i][j].style.backgroundColor= "#FFFF66";
 		  		}
 		  		if((i>=6&&i<=8)&&(j>=6&&j<=8)){
-		  			arr[i][j].style.backgroundColor= "#8133ff";
+		  			arr[i][j].style.backgroundColor= "#87CEFA";
 		  		}
+
+
+		  		if((count==17)||(count==20)||(count==62)||(count==65)){
+		  			arr[i][j].style.backgroundColor= "#FC062F";
+		  		}
+
+		  		if((count==26)||(count==29)||(count==71)||(count==74)){
+		  			arr[i][j].style.backgroundColor= "#00d11c";
+		  		}
+
+
+		  		if((count==152)||(count==155)||(count==197)||(count==200)){
+		  			arr[i][j].style.backgroundColor= "#00ad99";
+		  		}
+
+
+		  		if((count==161)||(count==164)||(count==206)||(count==209)){
+		  			arr[i][j].style.backgroundColor= "#FFFF66";
+		  		}
+
+
 
 		  		if((i==6&&j==1)||(i==1&&j==8)||(i==13&&j==6)||(i==8&&j==13)){
 		  			arr[i][j].style.backgroundImage= "url(images/star.png)";
@@ -79,7 +106,14 @@ function Gameboard(){
 			}
 		
 	}
-	
+	var outerblock =[];
+	for(var i=1;i<5;i++){
+		outerblock[i]= document.createElement("div");
+		outerblock[i].setAttribute("class","outer");
+		outerblock[i].setAttribute("id","outer"+i);
+
+		board.appendChild(outerblock[i]);
+	}
 
 
 }
