@@ -114,6 +114,11 @@ function Gameboard(){
 
 		board.appendChild(outerblock[i]);
 	}
+	var indicator= document.createElement("div");
+	indicator.setAttribute("class","indicator");
+	indicator.setAttribute("id","indicator1");
+	var wrapper= document.getElementById("main-wrapper");
+	wrapper.appendChild(indicator);
 
 
 }

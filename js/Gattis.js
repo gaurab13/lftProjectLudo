@@ -1,7 +1,7 @@
 function CreateGatti(){
 
 var board= document.getElementsByClassName("gameboard")[0];
-var tilewidth=30;
+var titleWidth=30;
 this.createGatti = function(){
 
 		var gatti= [];
@@ -19,8 +19,8 @@ this.createGatti = function(){
 				board.appendChild(gatti[i][j]);
 				
 
-				gatti[i][j].style.left=i*tilewidth +"px";
-				gatti[i][j].style.top=j*tilewidth +"px";
+				gatti[i][j].style.left=i*titleWidth +"px";
+				gatti[i][j].style.top=j*titleWidth +"px";
 				gatti[i][j].style.backgroundColor="red";
 				c1++;
 				}
@@ -31,8 +31,8 @@ this.createGatti = function(){
 				gatti[i][j].setAttribute("id","blue"+c2);
 				board.appendChild(gatti[i][j]);
 				
-				gatti[i][j].style.left=i*tilewidth +"px";
-				gatti[i][j].style.top=j*tilewidth +"px";
+				gatti[i][j].style.left=i*titleWidth +"px";
+				gatti[i][j].style.top=j*titleWidth +"px";
 				gatti[i][j].style.backgroundColor="blue";
 				c2++;
 				}
@@ -43,8 +43,8 @@ this.createGatti = function(){
 				gatti[i][j].setAttribute("id","green"+c3);
 				board.appendChild(gatti[i][j]);
 			
-				gatti[i][j].style.left=i*tilewidth +"px";
-				gatti[i][j].style.top=j*tilewidth +"px";
+				gatti[i][j].style.left=i*titleWidth +"px";
+				gatti[i][j].style.top=j*titleWidth +"px";
 				gatti[i][j].style.backgroundColor="green";
 				c3++;
 				}
@@ -55,8 +55,8 @@ this.createGatti = function(){
 				gatti[i][j].setAttribute("id","yellow"+c4);
 				board.appendChild(gatti[i][j]);
 				
-				gatti[i][j].style.left=i*tilewidth +"px";
-				gatti[i][j].style.top=j*tilewidth +"px";
+				gatti[i][j].style.left=i*titleWidth +"px";
+				gatti[i][j].style.top=j*titleWidth +"px";
 				gatti[i][j].style.backgroundColor="yellow";
 				c4++;
 				}

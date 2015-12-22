@@ -27,23 +27,17 @@ this.animate= function(element1,val){
 							var nextindex= routeno.pathred[index+1];
 							console.log("next point is "+ nextindex + "count was "+count);
 							var tile = document.getElementById(nextindex);
-							var prevTile= document.getElementById(count);
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
-							//prevTile.style.backgroundColor="gray";
-							//tile.style.backgroundColor="purple";
+							
 						}
 						if (currentcolor=="green"){
 							var index= routeno.pathgreen.indexOf(count);
 							var nextindex= routeno.pathgreen[index+1];
 							console.log("next point is "+ nextindex + "count was "+count);
 							var tile = document.getElementById(nextindex);
-							
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
-							var prevTile= document.getElementById(count);
-							//prevTile.style.backgroundColor="gray";
-							//tile.style.backgroundColor="purple";
 
 						}
 						if (currentcolor=="yellow"){
@@ -54,9 +48,6 @@ this.animate= function(element1,val){
 							
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
-							var prevTile= document.getElementById(count);
-							//prevTile.style.backgroundColor="gray";
-							//tile.style.backgroundColor="purple";
 
 						}
 						if (currentcolor=="blue"){
@@ -67,9 +58,6 @@ this.animate= function(element1,val){
 							
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
-							var prevTile= document.getElementById(count);
-							//prevTile.style.backgroundColor="gray";
-							//tile.style.backgroundColor="purple";
 
 						}
 
@@ -88,11 +76,15 @@ this.hittestForRed=function(element2){
 	if(element2.style.backgroundColor!="red"){
 		var left = parseInt(element2.style.left);
 		var top = parseInt(element2.style.top);
+		var tempx= left/30;
+		var tempy= top/30; 
 		console.log(left+":"+top);
+	
 	for(var k=1;k<5;k++){
 		var testSubject= document.getElementById("red"+k);
 		var testLeft= parseInt(testSubject.style.left);
 		var testTop= parseInt(testSubject.style.top);
+		
 		console.log(testLeft+":"+testTop);
 		if((left==testLeft)&&(top==testTop)){
 			console.log("HITTT");
@@ -104,6 +96,7 @@ this.hittestForRed=function(element2){
 			return k;
 			//gatti.setPassive("red",k);
 		}
+
 		}
 		return 0;
 
