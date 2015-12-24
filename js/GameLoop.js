@@ -3,103 +3,35 @@ function GameLoop(){
 
 	var board= document.getElementsByClassName("gameboard")[0];
 	var that= this;
-	var tilewidth=30;
+	var tilewidth1=45;
+	var tilewidth2=30;
 	var step=0;
 	var indicatorflag=0;
 	var controlflag =0;
 	var number=0;
 	var number2=0;
-	var redgatti = {
-			child: [{
-				license: 0,
-				outflag: 0	
-				},
-				{
-				license: 0,
-				outflag: 0	
-				},
-				{
-				license: 0,
-				outflag: 0	
-				},
-				{
-				license: 0,
-				outflag: 0	
-				}]
-		}
-	var greengatti = {
-				 child: [{
-				 license: 0,
-				outflag: 0
-				},
-				{
-				license: 0,
-				outflag: 0	
-				},
-				{
-				license: 0,
-				outflag: 0	
-				},
-				{
-				license: 0,
-				outflag: 0	
-				}]
-
-		}
-	var bluegatti = {
-				child: [{
-				license: 0,
-				outflag: 0
-				},
-				{
-				license: 0,
-				outflag: 0	
-				},
-				{
-				license: 0,
-				outflag: 0	
-				},
-				{
-				license: 0,
-				outflag: 0	
-				}]
-
-		}
-	var yellowgatti = {
-				child: [{
-				license: 0,
-				outflag: 0
-				},
-				{
-				license: 0,
-				outflag: 0	
-				},
-				{
-				license: 0,
-				outflag: 0	
-				},
-				{
-				license: 0,
-				outflag: 0	
-				}]
-
-		}
-
-	
-
+	var flag= new Flags();
+		
 this.calldice= function(noOfPlayers,noOfTokens){
 		//var dice= document.getElementsByClassName("dice")[0];
 		var dice = document.getElementById("dice");
 		dice.style.backgroundImage="url('images/one.png')";
 		number= noOfPlayers;
-		noOfToken= noOfTokens;
+		number2= noOfTokens;
 		console.log("number of players"+ number);
+
+		flag.testValue=500; 
+		console.log("the testflag is "+ flag.testValue);
+
+
 
 		console.log("ROLL THE DICE!!!");
 		
-		showactive(controlflag);
+		if(number2==4){
+			showactive();
+		}
 
-		//controlflag++;
+		
 		dice.addEventListener('click',function(event){
 			var initial=1;
 			
@@ -180,7 +112,7 @@ this.calldice= function(noOfPlayers,noOfTokens){
 			console.log("current active gatti is: " + active);
 
 				if (step==1||step==6){
-				for (var i=1;i<noOfToken+1;i++){
+				for (var i=1;i<number2+1;i++){
 				gatti[i] = document.getElementById(active+i);
 				// console.log("value of k is: " +k);
 				
@@ -189,33 +121,33 @@ this.calldice= function(noOfPlayers,noOfTokens){
 				gatti[i].style.zIndex= "2";
 
 				if(controlflag==1){
-					redgatti.child[i-1].license=1;
+					flag.redToken.child[i-1].license=1;
 
 				}
 				else if(controlflag==2){
 					if(number==2){
-					yellowgatti.child[i-1].license=1;
+					flag.yellowToken.child[i-1].license=1;
 					}
 					else{
-					greengatti.child[i-1].license=1;	
+					flag.greenToken.child[i-1].license=1;	
 					}
 				}
 				else if(controlflag==3){
-					yellowgatti.child[i-1].license=1;
+					flag.yellowToken.child[i-1].license=1;
 				}
 				else{
-					bluegatti.child[i-1].license=1;
+					flag.blueToken.child[i-1].license=1;
 				}
 
 				}
 			}
 			else{
-				for(var i=1;i<noOfToken+1;i++){
+				for(var i=1;i<number2+1;i++){
 				gatti[i] = document.getElementById(active+i);
 
 				if(controlflag==1){
-					if(redgatti.child[i-1].outflag==1){
-						redgatti.child[i-1].license=1;
+					if(flag.redToken.child[i-1].outflag==1){
+						flag.redToken.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
 						gatti[i].style.zIndex= "2";
 						indicatorflag=1;
@@ -224,16 +156,16 @@ this.calldice= function(noOfPlayers,noOfTokens){
 				}
 				else if(controlflag==2){
 					if(number==2){
-						if(yellowgatti.child[i-1].outflag==1){
-						yellowgatti.child[i-1].license=1;
+						if(flag.yellowToken.child[i-1].outflag==1){
+						flag.yellowToken.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
 						gatti[i].style.zIndex= "2";
 						indicatorflag=1;
 						}
 					}
 					else{
-						if(greengatti.child[i-1].outflag==1){
-						greengatti.child[i-1].license=1;
+						if(flag.greenToken.child[i-1].outflag==1){
+						flag.greenToken.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
 						gatti[i].style.zIndex= "2";
 						indicatorflag=1;
@@ -242,8 +174,8 @@ this.calldice= function(noOfPlayers,noOfTokens){
 					}					
 				
 				else if(controlflag==3){
-					if(yellowgatti.child[i-1].outflag==1){
-						yellowgatti.child[i-1].license=1;
+					if(flag.yellowToken.child[i-1].outflag==1){
+						flag.yellowToken.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
 						gatti[i].style.zIndex= "2";
 						indicatorflag=1;
@@ -251,8 +183,8 @@ this.calldice= function(noOfPlayers,noOfTokens){
 					
 				}
 				else if(controlflag==4){
-					if(bluegatti.child[i-1].outflag==1){
-						bluegatti.child[i-1].license=1;
+					if(flag.blueToken.child[i-1].outflag==1){
+						flag.blueToken.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
 						gatti[i].style.zIndex= "2";
 						indicatorflag=1;
@@ -261,7 +193,7 @@ this.calldice= function(noOfPlayers,noOfTokens){
 				}
 
 				}
-				if(indicatorflag==0){
+				if((number2==4)&&(indicatorflag==0)){
 					showactive();
 				}
 				else{
@@ -270,12 +202,15 @@ this.calldice= function(noOfPlayers,noOfTokens){
 
 			}
 			
-
+			if(number2==1){
+				document.getElementById(active+1).onclick= replyClick;
+			}
+			else{
 			document.getElementById(active+1).onclick= replyClick;
 			document.getElementById(active+2).onclick= replyClick;
 			document.getElementById(active+3).onclick= replyClick;
 			document.getElementById(active+4).onclick= replyClick;
-		
+			}
 			
 		}
 
@@ -288,18 +223,18 @@ this.calldice= function(noOfPlayers,noOfTokens){
 				var clicked = document.getElementById(currentid);
 				var clickedcolor= clicked.style.backgroundColor;
 		if(clickedcolor=="red"){
-			if (redgatti.child[index-1].license==1){
-				if(redgatti.child[index-1].outflag==0){				
+			if (flag.redToken.child[index-1].license==1){
+				if(flag.redToken.child[index-1].outflag==0){				
 				movegattiout(clicked,index);
-				redgatti.child[index-1].license=0;	
+				flag.redToken.child[index-1].license=0;	
 				}
 				else{
 				movegatti(clicked,index);
-				redgatti.child[index-1].license=0;	
+				flag.redToken.child[index-1].license=0;	
 				}
-				for(var i=0;i<4;i++){
+				for(var i=0;i<number2;i++){
 						if(i!=index-1){
-						redgatti.child[i].license=0;
+						flag.redToken.child[i].license=0;
 						var ntclickedid= clickedcolor+(i+1);
 						
 						var ntclicked= document.getElementById(ntclickedid);
@@ -311,18 +246,18 @@ this.calldice= function(noOfPlayers,noOfTokens){
 		}
 
 		if(clickedcolor=="green"){
-			if (greengatti.child[index-1].license==1){
-				if(greengatti.child[index-1].outflag==0){
+			if (flag.greenToken.child[index-1].license==1){
+				if(flag.greenToken.child[index-1].outflag==0){
 				movegattiout(clicked,index);
-				greengatti.child[index-1].license==0;
+				flag.greenToken.child[index-1].license==0;
 				}
 				else{
 				movegatti(clicked,index);
-				redgatti.child[index-1].license=0;	
+				flag.redToken.child[index-1].license=0;	
 				}
-				for(var i=0;i<4;i++){
+				for(var i=0;i<number2;i++){
 					if(i!=index-1){
-						greengatti.child[i].license=0;
+						flag.greenToken.child[i].license=0;
 						var ntclickedid= clickedcolor+(i+1);
 						
 						var ntclicked= document.getElementById(ntclickedid);
@@ -337,18 +272,18 @@ this.calldice= function(noOfPlayers,noOfTokens){
 
 
 		if(clickedcolor=="yellow"){
-			if (yellowgatti.child[index-1].license==1){
-				if(yellowgatti.child[index-1].outflag==0){
+			if (flag.yellowToken.child[index-1].license==1){
+				if(flag.yellowToken.child[index-1].outflag==0){
 				movegattiout(clicked,index);
-				yellowgatti.child[index-1].license==0;
+				flag.yellowToken.child[index-1].license==0;
 				}
 				else{
 				movegatti(clicked,index);
-				redgatti.child[index-1].license=0;	
+				flag.redToken.child[index-1].license=0;	
 				}
-				for(var i=0;i<4;i++){
+				for(var i=0;i<number2;i++){
 					if(i!=index-1){
-						yellowgatti.child[i].license=0;
+						flag.yellowToken.child[i].license=0;
 						var ntclickedid= clickedcolor+(i+1);
 						
 						var ntclicked= document.getElementById(ntclickedid);
@@ -363,18 +298,18 @@ this.calldice= function(noOfPlayers,noOfTokens){
 
 
 		if(clickedcolor=="blue"){
-			if (bluegatti.child[index-1].license==1){
-				if(bluegatti.child[index-1].outflag==0){
+			if (flag.blueToken.child[index-1].license==1){
+				if(flag.blueToken.child[index-1].outflag==0){
 				movegattiout(clicked,index);
-				bluegatti.child[index-1].license==0;
+				flag.blueToken.child[index-1].license==0;
 				}
 				else{
 				movegatti(clicked,index);
-				redgatti.child[index-1].license=0;	
+				flag.redToken.child[index-1].license=0;	
 				}
-				for(var i=0;i<4;i++){
+				for(var i=0;i<number2;i++){
 					if(i!=index-1){
-						bluegatti.child[i].license=0;
+						flag.blueToken.child[i].license=0;
 						var ntclickedid= clickedcolor+(i+1);
 						
 						var ntclicked= document.getElementById(ntclickedid);
@@ -416,28 +351,47 @@ this.calldice= function(noOfPlayers,noOfTokens){
 			this.element= element;
 			this.pos=value;
 			/*this.control= control;*/
-			
+			if(number2==4){
+				console.log("shouldnt be here");
 			if (element.style.backgroundColor=="red"){
-				redgatti.child[pos-1].outflag=1;
-				element.style.left=tilewidth*1 + "px";
-				element.style.top=tilewidth*6 + "px";
+				flag.redToken.child[pos-1].outflag=1;
+				element.style.left=tilewidth2*1 + "px";
+				element.style.top=tilewidth2*6 + "px";
 
 			}
 			if (element.style.backgroundColor=="green"){
-				greengatti.child[pos-1].outflag=1;
-				element.style.left=tilewidth*8 + "px";
-				element.style.top=tilewidth*1 + "px";
+				flag.greenToken.child[pos-1].outflag=1;
+				element.style.left=tilewidth2*8 + "px";
+				element.style.top=tilewidth2*1 + "px";
 			}
 			if (element.style.backgroundColor=="blue"){
-				bluegatti.child[pos-1].outflag=1;
-				element.style.left=tilewidth*6 + "px";
-				element.style.top=tilewidth*13 + "px";
+				flag.blueToken.child[pos-1].outflag=1;
+				element.style.left=tilewidth2*6 + "px";
+				element.style.top=tilewidth2*13 + "px";
 			}
 			if (element.style.backgroundColor=="yellow"){
-				yellowgatti.child[pos-1].outflag=1;
-				element.style.left=tilewidth*13 + "px";
-				element.style.top=tilewidth*8 + "px";
+				flag.yellowToken.child[pos-1].outflag=1;
+				element.style.left=tilewidth2*13 + "px";
+				element.style.top=tilewidth2*8 + "px";
 			}
+		}
+		else{
+			console.log("inside snakes here");
+			if (element.style.backgroundColor=="red"){
+				flag.redToken.child[pos-1].outflag=1;
+			}
+			if (element.style.backgroundColor=="green"){
+				flag.greenToken.child[pos-1].outflag=1;
+			}
+			if (element.style.backgroundColor=="blue"){
+				flag.blueToken.child[pos-1].outflag=1;
+			}
+			if (element.style.backgroundColor=="yellow"){
+				flag.yellowToken.child[pos-1].outflag=1;
+			}
+			element.style.left=tilewidth1*0 + "px";
+			element.style.top=tilewidth1*9 + "px";
+		}
 
 			console.log("player out");
 			// /controlflag++;
@@ -447,8 +401,9 @@ this.calldice= function(noOfPlayers,noOfTokens){
 			controlflag--;
 			console.log("your move again");
 			}
-	showactive();
-
+			if(number2==4){
+			showactive();
+				}
 			//that.calldice();
 
 	
@@ -469,34 +424,34 @@ this.calldice= function(noOfPlayers,noOfTokens){
 
 			
 			var a = new Animate(board);
-			a.animate(element,step);
+			a.animate(element,number2);
 			currentstep++;
 			if(currentstep==step+1){
 				clearInterval(intervalid);
 				
 				
-			var temp1 = a.hittestForRed(element);
+			var temp1 = a.hittestForRed(element,number2);
 			console.log("direct here"+temp1);
 			if(temp1!=0){
-			redgatti.child[temp1-1].outflag=0;
-			redgatti.child[temp1-1].license=0;
+			flag.redToken.child[temp1-1].outflag=0;
+			flag.redToken.child[temp1-1].license=0;
 			}
-			var temp2 =	a.hittestForBlue(element);
+			var temp2 =	a.hittestForBlue(element,number2);
 			console.log("direct here"+temp2);
 			if(temp2!=0){
-			bluegatti.child[temp2-1].outflag=0;
-			bluegatti.child[temp2-1].license=0;
+			flag.blueToken.child[temp2-1].outflag=0;
+			flag.blueToken.child[temp2-1].license=0;
 			}
-			var temp3 = a.hittestForGreen(element);
+			var temp3 = a.hittestForGreen(element,number2);
 			console.log("direct here"+temp3);
 			if(temp3!=0){
-			greengatti.child[temp3-1].outflag=0;
-			greengatti.child[temp3-1].license=0;
+			flag.greenToken.child[temp3-1].outflag=0;
+			flag.greenToken.child[temp3-1].license=0;
 			}
-			var temp4 =	a.hittestForYellow(element);
+			var temp4 =	a.hittestForYellow(element,number2);
 			if(temp4!=0){
-			yellowgatti.child[temp4-1].outflag=0;
-			yellowgatti.child[temp4-1].license=0;
+			flag.yellowToken.child[temp4-1].outflag=0;
+			flag.yellowToken.child[temp4-1].license=0;
 			}
 			console.log("direct here"+temp4);
 			
@@ -504,9 +459,11 @@ this.calldice= function(noOfPlayers,noOfTokens){
 					controlflag--;
 					console.log("your move again");
 				}
-				showactive();
+				if (number2==4){
+					showactive();
 
-			}
+					}
+				}
 		},200);
 	
 		element.style.borderColor="black";
@@ -522,7 +479,7 @@ this.calldice= function(noOfPlayers,noOfTokens){
 		}
 		else{
 		var activeindicator= controlflag+1;
-	}
+			}
 		var indicator1= document.getElementById("indicator1");
 		indicator1.style.display="none";
 		var outer1= document.getElementById("outer1");

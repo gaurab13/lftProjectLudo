@@ -84,15 +84,15 @@ var initiateGame = function(n, m){
 		lBoard.createBoard();
 		var g = new CreateGatti();
 		g.createGatti();
-		var gameLoop = new GameLoop();
-		gameLoop.calldice(noOfPlayers,m);
+		var gameLoop1 = new GameLoop();
+		gameLoop1.calldice(noOfPlayers,m);
 	}
 	else{
 		var sBoard= new SnakeBoard();
 		sBoard.createBoard2();
 		var token = new TokenSnake();
 		token.createToken();
-		var gameLoop = new SnakeLoop();
+		var gameLoop = new GameLoop();
 		gameLoop.calldice(noOfPlayers,m);
 	}
 	/**/
@@ -106,8 +106,8 @@ var selectGame = function(){
 	option2.style.display="none";
 	option3.style.display="none";
 
-ludo.style.display="block";
-snake.style.display="block";
+	ludo.style.display="block";
+	snake.style.display="block";
 
 	ludo.onclick= function(){
 	gameFlag= 4;
