@@ -2,47 +2,143 @@ function Homepage(){
 
 var main = document.getElementById("main-wrapper");
 var mainboard= document.getElementById("main-container");
+var option1 = document.createElement("button");
+var option2 =document.createElement("button");
+var option3 = document.createElement("button");
+var gameFlag=0;
 
-this.init = function(){
+var ludo= document.createElement("button");
+	ludo.setAttribute("class","game");
+	ludo.setAttribute("id","ludo");
+	ludo.innerHTML=("Ludo");
 
-var start = document.createElement("button");
+	var snake= document.createElement("button");
+	snake.setAttribute("class","game");
+	snake.setAttribute("id","snake");
+	snake.innerHTML=("Snakes and Ladders");
+
+option1.setAttribute("class","option");
+option2.setAttribute("class","option");
+option3.setAttribute("class","option");
+
+option2.setAttribute("id","three");
+option3.setAttribute("id","four");
+option1.setAttribute("id","two");
 
 mainboard.style.display="none";
 
+option2.innerHTML=("3");
+option3.innerHTML=("4");
+option1.innerHTML=("2");
+
+main.appendChild(option1);
+main.appendChild(option2);
+main.appendChild(option3);
+main.appendChild(ludo);
+main.appendChild(snake);
 
 
-//dice.style.display="none";
+this.init = function(){
 
+var noOfPlayers = 0;
 
+var optheader= document.getElementById("options-header");
+	optheader.style.display="none";
+selectGame();
 
-start.setAttribute("class","start");
-start.setAttribute("id","start");
-start.innerHTML=("Start");
-main.appendChild(start);
+console.log(gameFlag);
+option1.onclick= function(){
+	noOfPlayers= 2;
+	initiateGame(noOfPlayers,gameFlag);
+}
 
-start.onclick= initiateGame;
+option2.onclick= function(){
+	noOfPlayers= 3;
+	initiateGame(noOfPlayers,gameFlag);
+}
+option3.onclick=function(){
+	noOfPlayers= 4;
+	initiateGame(noOfPlayers,gameFlag);
+}
+
 
 
 }
 
-var initiateGame = function(){
-	var start= document.getElementById("start");
-	//var dice =document.getElementById("dice1");
-	start.style.display="none";
-	/*var dice = document.createElement("div");
-	dice.setAttribute("class","dice");
-	dice.setAttribute("id","dice1");
-	main.appendChild("dice");
-
-
-	dice.style.display="block";*/
+var initiateGame = function(n, m){
+	var optheader= document.getElementById("options-header");
+	optheader.style.display="none";
+	var noOfPlayers= n;
+	var selectedGame= m;
+	console.log("Game selected"+ m);
+	option1.style.display="none";
+	option2.style.display="none";
+	option3.style.display="none";
+	
+	
+	
 	mainboard.style.display="block";
-	var board= new Gameboard();
-	board.createBoard();
-	var g = new CreateGatti();
-	g.createGatti();
-	var gameLoop = new GameLoop();
-	gameLoop.calldice();
+	/**/
+	if(selectedGame==4){
+		var lBoard= new Gameboard();
+		lBoard.createBoard();
+		var g = new CreateGatti();
+		g.createGatti();
+		var gameLoop = new GameLoop();
+		gameLoop.calldice(noOfPlayers,m);
+	}
+	else{
+		var sBoard= new SnakeBoard();
+		sBoard.createBoard2();
+		var token = new TokenSnake();
+		token.createToken();
+		var gameLoop = new SnakeLoop();
+		gameLoop.calldice(noOfPlayers,m);
+	}
+	/**/
+	
+	
 }
 
+var selectGame = function(){
+	console.log("here");
+	option1.style.display="none";
+	option2.style.display="none";
+	option3.style.display="none";
+
+ludo.style.display="block";
+snake.style.display="block";
+
+	ludo.onclick= function(){
+	gameFlag= 4;
+	console.log("clicked");
+	setDisplay();
+	
+	}
+	snake.onclick=function(){
+	gameFlag= 1;
+	console.log("clicked");
+	setDisplay();
+	
+	}
+
+
+	
+
+
+}
+
+var setDisplay= function(){
+	var optheader= document.getElementById("options-header");
+	optheader.style.display="block";
+
+	option1.style.display="block";
+	option2.style.display="block";
+	option3.style.display="block";
+
+ludo.style.display="none";
+snake.style.display="none";
+
+
+}
 }
