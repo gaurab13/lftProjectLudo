@@ -3,9 +3,12 @@ function SnakeBoard(){
 	var tilewidth= 45;
 	var that= this;
 	var board= document.createElement("div");
-	
+
+	board.style.backgroundImage= "url(images/snake3.png)";
+
 	board.setAttribute("class","gameboard");
 	board.setAttribute("id","s-board");
+	container.style.border="none";
 	container.appendChild(board);
 	this.createBoard2 = function() {
 		
@@ -26,7 +29,7 @@ function SnakeBoard(){
 
 		  		arr[i][j].style.left= j*tilewidth + "px";
 		  		arr[i][j].style.top= i*tilewidth + "px";
-		  		arr[i][j].style.backgroundColor= "gray";
+		  	//	arr[i][j].style.backgroundColor= "gray";
 		  		board.appendChild(arr[i][j]);
 		  		count++;
 		  	}

@@ -7,7 +7,8 @@ function Animate(element) {
 	var initPosition = new InitialPosition();
 	var routeno = new Route();
 	
-this.animate= function(element1,val){
+this.animate= function(element1,val,step){
+	var diceValue= step;
 	var value =val;
 	var currentcolor= element1.style.backgroundColor;
 	if(value==1){		
@@ -35,11 +36,14 @@ this.animate= function(element1,val){
 					console.log("inside snakeee");
 					
 					var index= routeno.pathSnake.indexOf(count);
+
+					if((index+step)<routeno.pathSnake.indexOf(1)){
 					var nextindex= routeno.pathSnake[index+1];
 					console.log("next point is "+ nextindex + "index was "+index + "count was"+count);
 					var tile = document.getElementById(nextindex);
 					element1.style.left= parseInt(tile.style.left)+"px";
 					element1.style.top= parseInt(tile.style.top)+"px";
+						}
 					}
 					else{
 						if (currentcolor=="red"){
@@ -256,6 +260,9 @@ this.hittestForYellow=function(element2,num){
 		return 0;
 	}
 
+}
+this.ladderTest= function(element2){
+	console.log("ladder tested");
 }
 
 

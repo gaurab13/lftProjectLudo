@@ -12,7 +12,7 @@ this.createGatti = function(){
 	for(var i=0;i<16;i++){
 		token[i]= document.createElement("div");
 		board.appendChild(token[i]);
-		token[i].setAttribute("class","token");
+		token[i].setAttribute("class","gatti");
 
 		if(i<4){
 		token[i].style.left= initPosition.posRed.child[c1-1].x*tilewidth+"px";

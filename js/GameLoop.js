@@ -424,11 +424,11 @@ this.calldice= function(noOfPlayers,noOfTokens){
 
 			
 			var a = new Animate(board);
-			a.animate(element,number2);
+			a.animate(element,number2,step);
 			currentstep++;
 			if(currentstep==step+1){
 				clearInterval(intervalid);
-				
+		
 				
 			var temp1 = a.hittestForRed(element,number2);
 			console.log("direct here"+temp1);
@@ -454,6 +454,9 @@ this.calldice= function(noOfPlayers,noOfTokens){
 			flag.yellowToken.child[temp4-1].license=0;
 			}
 			console.log("direct here"+temp4);
+			if(number2==1){
+				a.ladderTest(element);
+			}
 			
 				if(step==1||step==6){
 					controlflag--;
