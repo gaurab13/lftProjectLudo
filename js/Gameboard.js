@@ -1,8 +1,14 @@
 function Gameboard(){
 	
-	var board= document.getElementsByClassName("gameboard")[0];
+var container= document.getElementById("main-container");
+	//var board= document.getElementsByClassName("gameboard")[0];
 	var tilewidth= 30;
 	this.createBoard = function() {
+		var board= document.createElement("div");
+		board.setAttribute("class","gameboard");
+		board.setAttribute("id","board");
+		container.appendChild(board)
+
 		var arr= [];
 		var count=1;
 		var i,j=0;
@@ -20,6 +26,8 @@ function Gameboard(){
 		  		arr[i][j].style.left= j*tilewidth + "px";
 		  		arr[i][j].style.top= i*tilewidth + "px";
 		  		arr[i][j].style.backgroundColor= "white";
+		  		//var board = document.getElementById("board");
+		  		//var board= document.getElementsByClassName("gameboard")[0];
 		  		board.appendChild(arr[i][j]);
 
 		  		if(i <=5 && j <=5){
@@ -111,7 +119,7 @@ function Gameboard(){
 		outerblock[i]= document.createElement("div");
 		outerblock[i].setAttribute("class","outer");
 		outerblock[i].setAttribute("id","outer"+i);
-
+		//var board = document.getElementById("board");
 		board.appendChild(outerblock[i]);
 	}
 	var indicator= document.createElement("div");
