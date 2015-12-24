@@ -71,4 +71,23 @@ function InitialPosition(){
 				y: 13	
 				}]
 	} 
+	this.initPosSnake={
+		child: [{
+				x: 3,
+				y: 10	
+				},
+				{
+				x: 4,
+				y: 10	
+				},
+				{
+				x: 5,
+				y: 10	
+				},
+				{
+				x: 6,
+				y: 10	
+				}]
+
+	}
 }
