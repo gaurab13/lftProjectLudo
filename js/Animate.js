@@ -261,9 +261,7 @@ this.hittestForYellow=function(element2,num){
 	}
 
 }
-this.ladderTest= function(element2){
-	console.log("ladder tested");
-}
+
 
 
 

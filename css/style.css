@@ -1,8 +1,10 @@
 
 #main-wrapper{
 	width:100%;
-	height:500px;
+	height:643px;
+	padding-top: 50px;
 	background-color:#87CEFA;
+	/*background-color:#734315;*/
 }
 #main-container{
 	position:relative;
@@ -11,7 +13,9 @@
 	
 	width:470px;
 	padding:10px 0;
-	background-color: #87CEFA;
+	background-color: #734315;
+	background-color:#6a310d;
+	background-color:#87CEFA;
 	border-radius:5%;
 	border: 10px solid #6a310d;
 }
@@ -19,14 +23,14 @@
 	position:relative;
 	width:450px;
 	min-height:450px;
-	background-color: #87CEFA;
+	background-color: #6a310d;
+	background-color:#87CEFA;
 	margin:0 auto;
 	
 }
 #s-board{
 	height:500px;
-	background-position: -5px 0%;
-	background-repeat: no-repeat;
+	
 
 }
 .outer{
@@ -38,7 +42,7 @@
 	z-index:2;
 	top:20px;
 	left:20px;
-	border:4px solid #87CEFA;
+	border:4px solid #734315;
 
 }
 #outer2{
@@ -64,8 +68,8 @@
 .tiles2{
 	height:44px;
 	width:44px;
-	/*
-	border:1px solid black;*/
+	
+	border:1px solid black;
 	position: absolute;
 
 	/*border-radius:100%;*/
@@ -84,17 +88,17 @@
 	width:38px;
 	height:38px;
 	position:absolute;
-	z-index:1;
+	z-index:2;
 	border-radius:100%;
-border: 2px solid #4eb8e8;
+border: 2px solid black;
 }
 .dice-container{
 	width:104px;
 	height:104px;
 	border-radius:10%;
 	overflow:hidden;
-	left:300px;
-	top:40px;
+	left:165px;
+	top:190px;
 	position:absolute;
 }
 img{
@@ -105,9 +109,17 @@ img{
 	width:104px;
 	height:104px;
 }
-.dice :hover{
-	color:blue;
+.instruction{
+	width:340px;
+	text-align:center;
+	border:1px solid black;
+	position:absolute;
+	left:50px;
+	top:50px;
+	color:black;
+	font-weight: bold;
 }
+
 .start{
 	position:absolute;
 	width:75px;
@@ -169,3 +181,94 @@ top:100px;
 	left:250px;
 	top:40px;
 }
+#snake1{
+	position: absolute;
+	z-index:2;
+	height:147px;
+	width:130px;
+	
+	left:50px;
+	top:200px;	
+	background-image :url("../images/snakeimg1.png");
+}
+.ladder{
+	position: absolute;
+	
+	height:85px;
+	width:30px;
+	background-repeat: no-repeat;
+}
+#ladder1{
+	z-index:1;
+	left:50px;
+	top:200px;	
+	background-image :url("../images/ladder1.png");
+}
+#ladder2{
+	z-index:1;
+	left:550px;
+	top:100px;	
+	background-image :url("../images/ladder2.png");
+}
+#ladder3{
+	z-index:1;
+	left:750px;
+	top:20px;	
+	background-image :url("../images/ladder2.png");
+}
+#ladder4{
+	z-index:1;
+	left:800px;
+	top:200px;	
+	background-image :url("../images/ladder1.png");
+}
+.snakes{
+	position: absolute;
+	
+	
+	background-repeat: no-repeat;
+}
+#snake1{
+	z-index:1;
+	height:385px;
+	width:40px;
+	left:50px;
+	top:200px;	
+	background-image :url("../images/snake1.png");
+}
+#snake2{
+	z-index:1;
+	left:550px;
+	height:92px;
+	width:100px;
+	top:100px;	
+	background-image :url("../images/snake2.png");
+}
+#snake3{
+	z-index:1;
+	left:750px;
+	top:20px;
+	height:145px;
+	width:60px;	
+	background-image :url("../images/snake5.png");
+}
+#snake4{
+	z-index:1;
+	left:800px;
+	top:200px;	
+	height:145px;
+	width:60px;	
+	background-image :url("../images/snake5.png");
+}
+
+#restart{
+	width:50px;
+	height:30px;
+	position: absolute;
+	left:1050px;
+	top:40px;
+	background-color: red;
+	border:1px solid black;
+	
+}
+
