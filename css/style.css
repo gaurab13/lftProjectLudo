@@ -8,13 +8,9 @@
 }
 #main-container{
 	position:relative;
-	/*border:1px solid black;*/
 	margin:0 auto;
-	
 	width:470px;
 	padding:10px 0;
-	background-color: #734315;
-	background-color:#6a310d;
 	background-color:#87CEFA;
 	border-radius:5%;
 	border: 10px solid #6a310d;
@@ -126,7 +122,7 @@ img{
 	border:1px solid black;
 	position:absolute;
 	left:50px;
-	top:50px;
+	top:10px;
 	color:black;
 	font-weight: bold;
 }

@@ -3,20 +3,14 @@ function SnakeBoard(){
 	var tilewidth= 45;
 	var that= this;
 	var board= document.createElement("div");
-
-	//board.style.backgroundImage= "url(images/snake3.png)";
-	
 	board.setAttribute("class","gameboard");
 	board.setAttribute("id","s-board");
 	container.style.border="none";
 	container.appendChild(board);
 	
 	this.createBoard2 = function() {
-		
-
 		var arr= [];
 		var count=1;
-
 		var index =101;
 		var i,j=0;
 		for (i=0;i<11;i++) {
@@ -25,7 +19,6 @@ function SnakeBoard(){
 		  		arr[i][j]= document.createElement("div");
 		  		arr[i][j].setAttribute("class","tiles2");
 		  		arr[i][j].setAttribute("id",count);
-
 		  		if(i % 2==0){
 		  			index--;
 		  		}
@@ -33,21 +26,17 @@ function SnakeBoard(){
 		  			index++;
 		  		}
 		  		arr[i][j].innerHTML= index;
-
 		  		arr[i][j].style.left= j*tilewidth + "px";
 		  		arr[i][j].style.top= i*tilewidth + "px";
 		  		if(index%2==0){
 		  			arr[i][j].style.backgroundColor= "white";
 		  		}
-		  	//	arr[i][j].style.backgroundColor= "gray";
 		  		board.appendChild(arr[i][j]);
 		  		count++;
 		  		if(count>101){
 		  			arr[i][j].innerHTML= null;
-		  			//arr[i][j].style.backgroundColor= "#734315";
 
 		  		}
-		  		//index--;
 		  	}
 		  	if(i%2==0){
 		  	index-=11;
@@ -55,10 +44,7 @@ function SnakeBoard(){
 		  	else{
 		  	index-=9;
 		  	}
-		  }
-	
-
-
-}
+		}
+	}
 
 }

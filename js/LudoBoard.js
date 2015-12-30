@@ -93,20 +93,15 @@ function LudoBoard(){
 				  			if(i==8&&j==13){
 				  			arr[i][j].style.backgroundColor= "#FFFF66";
 				  			}
-				  		}
-				  		
-				  	
+				  		}					  	
 				  	count++;
-
-					}
-		
+					}	
 	}
 	var outerblock =[];
 	for(var i=1;i<5;i++){
 		outerblock[i]= document.createElement("div");
 		outerblock[i].setAttribute("class","outer");
 		outerblock[i].setAttribute("id","outer"+i);
-		//var board = document.getElementById("board");
 		board.appendChild(outerblock[i]);
 	}
 	var home = document.createElement("div");
@@ -114,5 +109,5 @@ function LudoBoard(){
 	board.appendChild(home);
 
 
-}
+	}
 }
