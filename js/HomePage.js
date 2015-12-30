@@ -6,6 +6,7 @@ var option1 = document.createElement("button");
 var option2 =document.createElement("button");
 var option3 = document.createElement("button");
 var gameFlag=0;
+var that= this;
 
 var ludo= document.createElement("button");
 	ludo.setAttribute("class","game");
@@ -41,7 +42,8 @@ main.appendChild(snake);
 this.init = function(){
 
 var noOfPlayers = 0;
-
+var status= document.getElementById("status");
+status.style.display="none";
 var optheader= document.getElementById("options-header");
 	optheader.style.display="none";
 selectGame();
@@ -84,15 +86,16 @@ var initiateGame = function(n, m){
 		lBoard.createBoard();
 		var g = new CreateGatti();
 		g.createGatti();
-		var gameLoop = new GameLoop();
-		gameLoop.calldice(noOfPlayers,m);
+		var gameLoop1 = new GameLoop();
+		gameLoop1.calldice(noOfPlayers,m);
 	}
 	else{
 		var sBoard= new SnakeBoard();
 		sBoard.createBoard2();
 		var token = new TokenSnake();
-		token.createToken();
+		token.createToken(noOfPlayers);
 		var gameLoop = new SnakeLoop();
+		//gameLoop.setSnakeBoard();
 		gameLoop.calldice(noOfPlayers,m);
 	}
 	/**/
@@ -106,8 +109,8 @@ var selectGame = function(){
 	option2.style.display="none";
 	option3.style.display="none";
 
-ludo.style.display="block";
-snake.style.display="block";
+	ludo.style.display="block";
+	snake.style.display="block";
 
 	ludo.onclick= function(){
 	gameFlag= 4;
@@ -135,10 +138,23 @@ var setDisplay= function(){
 	option1.style.display="block";
 	option2.style.display="block";
 	option3.style.display="block";
-
-ludo.style.display="none";
-snake.style.display="none";
-
-
+	ludo.style.display="none";
+	snake.style.display="none";
 }
+
+
+var restart= document.getElementById("restart");
+restart.onclick= function(){
+	mainboard.style.display="none";
+	var container= document.getElementById("main-container");
+	container.style.display="none";
+	var lboard= document.getElementById("l-board");
+	var sboard= document.getElementById("s-board");
+	lboard.style.display="none";
+
+	//mainContainer.style.display="none";
+  	that.init();
+  
+}
+
 }

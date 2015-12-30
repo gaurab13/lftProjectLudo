@@ -1,44 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>game</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/reset.css">
-</head>
-<body>
-<div id="main-wrapper">
-	<div class="options-header" id="options-header">
-	No Of Players :
-	</div>
-    <div id="main-container">
-         <!-- <div class="gameboard" id="board">
-
-        </div>  -->
-    </div>
-    
-    <div class="dice-container" id="dice">
-  		 	
-   	</div>
-   	
-  
-</div>
-<script src="js/HomePage.js"></script>
-<script src="js/Gameboard.js"></script>
-<script src="js/SnakeBoard.js"></script>
-<script src="js/Gattis.js"></script>
-<script src="js/Token2.js"></script>
-<script src="js/GameLoop.js"></script>
-<script src="js/SnakeLoop.js"></script>
-<script src="js/Animate.js"></script>
-<script src="js/Route.js"></script>
-<script src="js/InitialPosition.js"></script>
-
-<script>
-var home = new Homepage();
-home.init();
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>game</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+	</head>
+	<body>
+		<div id="main-wrapper">
+			<div class="options-header" id="options-header">
+				No Of Players :
+			</div>
+			<div id="main-container">
+			</div>
+			<div class="dice-container" id="dice">	 	
+			</div>
+			<div class= "instruction" id="status">
+			</div>
+			<div id="restart">
+			</div>  
+		</div>
+		<script src="js/Main.js"></script>
+		<script src="js/LudoBoard.js"></script>
+		<script src="js/SnakeBoard.js"></script>
+		<script src="js/Token.js"></script>
+		<script src="js/Token2.js"></script>
+		<script src="js/LudoLoop.js"></script>
+		<script src="js/SnakeLoop.js"></script>
+		<script src="js/Flags.js"></script>
+		<script src="js/Animate.js"></script>
+		<script src="js/Route.js"></script>
+		<script src="js/InitialPosition.js"></script>
+		<script src="js/Ladders.js"></script>
 
 
-</script>
+		<script>
+			var home = new Main();
+			home.init();
 
-</body>
-</html>
+
+		</script>
+
+	</body>
+	</html>

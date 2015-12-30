@@ -6,7 +6,7 @@ var container= document.getElementById("main-container");
 	this.createBoard = function() {
 		var board= document.createElement("div");
 		board.setAttribute("class","gameboard");
-		board.setAttribute("id","board");
+		board.setAttribute("id","l-board");
 		container.appendChild(board)
 
 		var arr= [];
@@ -25,30 +25,35 @@ var container= document.getElementById("main-container");
 
 		  		arr[i][j].style.left= j*tilewidth + "px";
 		  		arr[i][j].style.top= i*tilewidth + "px";
-		  		arr[i][j].style.backgroundColor= "white";
+		  		arr[i][j].style.backgroundColor= "#white";
 		  		//var board = document.getElementById("board");
 		  		//var board= document.getElementsByClassName("gameboard")[0];
 		  		board.appendChild(arr[i][j]);
 
 		  		if(i <=5 && j <=5){
 		  			arr[i][j].style.backgroundColor= "#87CEFA";
-		  			arr[i][j].style.borderStyle="none";
+		  			//arr[i][j].style.backgroundColor= "#6a310d";
+		  			//arr[i][j].style.borderStyle="none";
 
 		  		}
 		  		if(i<=5 && j >=9){
 		  			//arr[i][j].style.backgroundColor= "#00d11c";
 		  			arr[i][j].style.borderStyle="none";
 		  			arr[i][j].style.backgroundColor= "#87CEFA";
+		  			//arr[i][j].style.backgroundColor= "#6a310d";
+
 		  		}
 		  		if(i >=9 && j <=5){
 		  			//arr[i][j].style.backgroundColor= "#00ad99";
 		  			arr[i][j].style.borderStyle="none";
 		  			arr[i][j].style.backgroundColor= "#87CEFA";
+		  			//arr[i][j].style.backgroundColor= "#6a310d";
 		  		}
 		  		if(i >=9 && j >=9){
 		  			//arr[i][j].style.backgroundColor= "#FFFF66";
 		  			arr[i][j].style.borderStyle="none";
 		  			arr[i][j].style.backgroundColor= "#87CEFA";
+		  			//arr[i][j].style.backgroundColor= "#6a310d";
 		  		}
 
 
@@ -122,11 +127,7 @@ var container= document.getElementById("main-container");
 		//var board = document.getElementById("board");
 		board.appendChild(outerblock[i]);
 	}
-	var indicator= document.createElement("div");
-	indicator.setAttribute("class","indicator");
-	indicator.setAttribute("id","indicator1");
-	var wrapper= document.getElementById("main-wrapper");
-	wrapper.appendChild(indicator);
+	
 
 
 }

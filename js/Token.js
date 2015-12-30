@@ -1,8 +1,8 @@
-function CreateGatti(){
+function CreateToken(){
 
 var board= document.getElementsByClassName("gameboard")[0];
 var tilewidth=30;
-this.createGatti = function(){
+this.createTokens = function(){
 
 		var token= [];
 		var c1= c2= c3= c4=1;

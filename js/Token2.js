@@ -4,14 +4,14 @@ function TokenSnake(){
 	var board = sBoard.board;
 */
 	
-	this.createToken= function(){
+	this.createToken= function(val){
 		var tilewidth=45;
 		var count =1;
 		var token=[];
 
 		var initPosition = new InitialPosition();
 		
-	for(var i=0;i<4;i++){
+	for(var i=0;i<val;i++){
 		token[i]= document.createElement("div");
 		board.appendChild(token[i]);
 		token[i].setAttribute("class","token");

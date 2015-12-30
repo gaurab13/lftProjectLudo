@@ -1,6 +1,4 @@
-function GameLoop(){
-	
-
+function LudoLoop(){
 	var board= document.getElementsByClassName("gameboard")[0];
 	var that= this;
 	var tilewidth1=45;
@@ -11,9 +9,8 @@ function GameLoop(){
 	var number=0;
 	var number2=0;
 	var flag= new Flags();
-	
 
-this.calldice= function(noOfPlayers,noOfTokens){
+	this.calldice= function(noOfPlayers,noOfTokens){
 		var dice = document.getElementById("dice");
 		dice.style.backgroundImage="url('images/one.png')";
 		number= noOfPlayers;
@@ -29,9 +26,7 @@ this.calldice= function(noOfPlayers,noOfTokens){
 		
 		if(number2==4){
 			showactive();
-		}
-
-		
+		}	
 		dice.addEventListener('click',function(event){
 			var initial=1;
 			
@@ -71,286 +66,277 @@ this.calldice= function(noOfPlayers,noOfTokens){
 
 				});
 		
-}
-		function rolldice(dice){
-			var gatti=[];
-			var elem= [];
-			
-			if (controlflag==number){
-				controlflag=0;
-				
-			}
-			controlflag++;
-			var active = loop();
-		 	step = getrandom();
-		 
-	 			if(step==1){
-						dice.style.backgroundImage="url('images/one.png')";
-					}
-				if(step==2){
-						dice.style.backgroundImage="url('images/two.png')";
-					}
-				if(step==3){
-						dice.style.backgroundImage="url('images/three.png')";
-					}
-				if(step==4){
-						dice.style.backgroundImage="url('images/four.png')";
-					}
-				if(step==5){
-						dice.style.backgroundImage="url('images/five.png')";
-					}
-				if(step==6){
-						dice.style.backgroundImage="url('images/six.png')";
-					}
+	}
 
-			
-		 
-			console.log("you have got: " +step);
-			console.log("current active gatti is: " + active);
-
-				if (step==1||step==6){
-				for (var i=1;i<number2+1;i++){
-				gatti[i] = document.getElementById(active+i);
-				// console.log("value of k is: " +k);
-				
-				gatti[i].style.borderColor= "white";
-				
-				gatti[i].style.zIndex= "2";
-
-				if(controlflag==1){
-					flag.redToken.child[i-1].license=1;
-
-				}
-				else if(controlflag==2){
-					if(number==2){
-					flag.yellowToken.child[i-1].license=1;
-					}
-					else{
-					flag.greenToken.child[i-1].license=1;	
-					}
-				}
-				else if(controlflag==3){
-					flag.yellowToken.child[i-1].license=1;
-				}
-				else{
-					flag.blueToken.child[i-1].license=1;
-				}
-
-				}
-			}
-			else{
-				for(var i=1;i<number2+1;i++){
-				gatti[i] = document.getElementById(active+i);
-
-				if(controlflag==1){
-					if(flag.redToken.child[i-1].outflag==1){
-						flag.redToken.child[i-1].license=1;
-						gatti[i].style.borderColor= "white";
-						gatti[i].style.zIndex= "2";
-						indicatorflag=1;
-					}
-					
-				}
-				else if(controlflag==2){
-					if(number==2){
-						if(flag.yellowToken.child[i-1].outflag==1){
-						flag.yellowToken.child[i-1].license=1;
-						gatti[i].style.borderColor= "white";
-						gatti[i].style.zIndex= "2";
-						indicatorflag=1;
-						}
-					}
-					else{
-						if(flag.greenToken.child[i-1].outflag==1){
-						flag.greenToken.child[i-1].license=1;
-						gatti[i].style.borderColor= "white";
-						gatti[i].style.zIndex= "2";
-						indicatorflag=1;
-						}
-					}
-					}					
-				
-				else if(controlflag==3){
-					if(flag.yellowToken.child[i-1].outflag==1){
-						flag.yellowToken.child[i-1].license=1;
-						gatti[i].style.borderColor= "white";
-						gatti[i].style.zIndex= "2";
-						indicatorflag=1;
-					}
-					
-				}
-				else if(controlflag==4){
-					if(flag.blueToken.child[i-1].outflag==1){
-						flag.blueToken.child[i-1].license=1;
-						gatti[i].style.borderColor= "white";
-						gatti[i].style.zIndex= "2";
-						indicatorflag=1;
-					}
-					
-				}
-
-				}
-				if((number2==4)&&(indicatorflag==0)){
-					showactive();
-				}
-				else{
-					indicatorflag=0;
-				}
-
-			}
-			
-			if(number2==1){
-				document.getElementById(active+1).onclick= replyClick;
-			}
-			else{
-			document.getElementById(active+1).onclick= replyClick;
-			document.getElementById(active+2).onclick= replyClick;
-			document.getElementById(active+3).onclick= replyClick;
-			document.getElementById(active+4).onclick= replyClick;
-			}
+	function rolldice(dice){
+		var token=[];
+		var elem= [];
+		
+		if (controlflag==number){
+			controlflag=0;
 			
 		}
+		controlflag++;
+		var active = loop();
+	 	step = getrandom();
+	 
+ 			if(step==1){
+					dice.style.backgroundImage="url('images/one.png')";
+				}
+			if(step==2){
+					dice.style.backgroundImage="url('images/two.png')";
+				}
+			if(step==3){
+					dice.style.backgroundImage="url('images/three.png')";
+				}
+			if(step==4){
+					dice.style.backgroundImage="url('images/four.png')";
+				}
+			if(step==5){
+					dice.style.backgroundImage="url('images/five.png')";
+				}
+			if(step==6){
+					dice.style.backgroundImage="url('images/six.png')";
+				}
 
-		var replyClick= function(){
+			if (step==1||step==6){
+			for (var i=1;i<number2+1;i++){
+			token[i] = document.getElementById(active+i);
+			token[i].style.borderColor= "white";
+			token[i].style.zIndex= "2";
+
+			if(controlflag==1){
+				flag.redToken.child[i-1].license=1;
+
+			}
+			else if(controlflag==2){
+				if(number==2){
+				flag.yellowToken.child[i-1].license=1;
+				}
+				else{
+				flag.greenToken.child[i-1].license=1;	
+				}
+			}
+			else if(controlflag==3){
+				flag.yellowToken.child[i-1].license=1;
+			}
+			else{
+				flag.blueToken.child[i-1].license=1;
+			}
+
+			}
+		}
+		else{
+			for(var i=1;i<number2+1;i++){
+			token[i] = document.getElementById(active+i);
+
+			if(controlflag==1){
+				if(flag.redToken.child[i-1].outflag==1){
+					flag.redToken.child[i-1].license=1;
+					token[i].style.borderColor= "white";
+					token[i].style.zIndex= "2";
+					indicatorflag=1;
+				}
 				
-				var currentid = this.id;
-				var length = currentid.length;
-				var index = currentid.charAt(length-1);
-				console.log("the number is : "+ index);
-				var clicked = document.getElementById(currentid);
-				var clickedcolor= clicked.style.backgroundColor;
+			}
+			else if(controlflag==2){
+				if(number==2){
+					if(flag.yellowToken.child[i-1].outflag==1){
+					flag.yellowToken.child[i-1].license=1;
+					token[i].style.borderColor= "white";
+					token[i].style.zIndex= "2";
+					indicatorflag=1;
+					}
+				}
+				else{
+					if(flag.greenToken.child[i-1].outflag==1){
+					flag.greenToken.child[i-1].license=1;
+					token[i].style.borderColor= "white";
+					token[i].style.zIndex= "2";
+					indicatorflag=1;
+					}
+				}
+				}					
+			
+			else if(controlflag==3){
+				if(flag.yellowToken.child[i-1].outflag==1){
+					flag.yellowToken.child[i-1].license=1;
+					token[i].style.borderColor= "white";
+					token[i].style.zIndex= "2";
+					indicatorflag=1;
+				}
+				
+			}
+			else if(controlflag==4){
+				if(flag.blueToken.child[i-1].outflag==1){
+					flag.blueToken.child[i-1].license=1;
+					token[i].style.borderColor= "white";
+					token[i].style.zIndex= "2";
+					indicatorflag=1;
+				}
+				
+			}
+
+			}
+			if((number2==4)&&(indicatorflag==0)){
+				showactive();
+			}
+			else{
+				indicatorflag=0;
+			}
+
+		}
+		
+		if(number2==1){
+			document.getElementById(active+1).onclick= replyClick;
+		}
+		else{
+		document.getElementById(active+1).onclick= replyClick;
+		document.getElementById(active+2).onclick= replyClick;
+		document.getElementById(active+3).onclick= replyClick;
+		document.getElementById(active+4).onclick= replyClick;
+		}
+		
+	}
+
+	var replyClick= function(){	
+		var currentid = this.id;
+		var length = currentid.length;
+		var index = currentid.charAt(length-1);
+		var clicked = document.getElementById(currentid);
+		var clickedcolor= clicked.style.backgroundColor;
 		if(clickedcolor=="red"){
 			if(controlflag==1){
-			if (flag.redToken.child[index-1].license==1){
-				if(flag.redToken.child[index-1].outflag==0){				
-				movegattiout(clicked,index);
-				flag.redToken.child[index-1].license=0;	
-				}
-				else{
-				movegatti(clicked,index);
-				flag.redToken.child[index-1].license=0;	
-				}
-				for(var i=0;i<number2;i++){
+				if (flag.redToken.child[index-1].license==1){
+					if(flag.redToken.child[index-1].outflag==0){				
+						movetokenout(clicked,index);
+						flag.redToken.child[index-1].license=0;	
+					}
+					else{
+						movetoken(clicked,index);
+						flag.redToken.child[index-1].license=0;	
+					}
+					for(var i=0;i<number2;i++){
 						if(i!=index-1){
-						flag.redToken.child[i].license=0;
-						var ntclickedid= clickedcolor+(i+1);
-						
-						var ntclicked= document.getElementById(ntclickedid);
-						ntclicked.style.borderColor="black";
-						ntclicked.style.zIndex= "1";
+							flag.redToken.child[i].license=0;
+							var ntclickedid= clickedcolor+(i+1);
+							
+							var ntclicked= document.getElementById(ntclickedid);
+							ntclicked.style.borderColor="black";
+							ntclicked.style.zIndex= "1";
 						}
 					}				
+				}
 			}
 		}
-	}
 
 		if(clickedcolor=="green"){
 			if(controlflag==2){
-			if (flag.greenToken.child[index-1].license==1){
-				if(flag.greenToken.child[index-1].outflag==0){
-				movegattiout(clicked,index);
-				flag.greenToken.child[index-1].license==0;
-				}
-				else{
-				movegatti(clicked,index);
-				flag.redToken.child[index-1].license=0;	
-				}
-				for(var i=0;i<number2;i++){
-					if(i!=index-1){
-						flag.greenToken.child[i].license=0;
-						var ntclickedid= clickedcolor+(i+1);
-						
-						var ntclicked= document.getElementById(ntclickedid);
-						ntclicked.style.borderColor="black";
-						ntclicked.style.zIndex= "1";
+				if (flag.greenToken.child[index-1].license==1){
+					if(flag.greenToken.child[index-1].outflag==0){
+						movetokenout(clicked,index);
+						flag.greenToken.child[index-1].license==0;
+					}
+					else{
+						movetoken(clicked,index);
+						flag.redToken.child[index-1].license=0;	
+					}
+					for(var i=0;i<number2;i++){
+						if(i!=index-1){
+							flag.greenToken.child[i].license=0;
+							var ntclickedid= clickedcolor+(i+1);
+							
+							var ntclicked= document.getElementById(ntclickedid);
+							ntclicked.style.borderColor="black";
+							ntclicked.style.zIndex= "1";
 						}
 					}
-	
+
 				}
-}
 			}
+		}
 
 
 		if(clickedcolor=="yellow"){
 			if((controlflag==3)||((controlflag=2)&&(number=2))){
-			if (flag.yellowToken.child[index-1].license==1){
-				if(flag.yellowToken.child[index-1].outflag==0){
-				movegattiout(clicked,index);
-				flag.yellowToken.child[index-1].license==0;
-				}
-				else{
-				movegatti(clicked,index);
-				flag.redToken.child[index-1].license=0;	
-				}
-				for(var i=0;i<number2;i++){
-					if(i!=index-1){
-						flag.yellowToken.child[i].license=0;
-						var ntclickedid= clickedcolor+(i+1);
-						
-						var ntclicked= document.getElementById(ntclickedid);
-						ntclicked.style.borderColor="black";
-						ntclicked.style.zIndex= "1";
+				if (flag.yellowToken.child[index-1].license==1){
+					if(flag.yellowToken.child[index-1].outflag==0){
+						movetokenout(clicked,index);
+						flag.yellowToken.child[index-1].license==0;
+					}
+					else{
+						movetoken(clicked,index);
+						flag.redToken.child[index-1].license=0;	
+					}
+					for(var i=0;i<number2;i++){
+						if(i!=index-1){
+							flag.yellowToken.child[i].license=0;
+							var ntclickedid= clickedcolor+(i+1);
+							
+							var ntclicked= document.getElementById(ntclickedid);
+							ntclicked.style.borderColor="black";
+							ntclicked.style.zIndex= "1";
 						}
 					}
-	
+
 				}
 
 			}
-}
+		}
 
 		if(clickedcolor=="blue"){
 			if(controlflag==4){
-			if (flag.blueToken.child[index-1].license==1){
-				if(flag.blueToken.child[index-1].outflag==0){
-				movegattiout(clicked,index);
-				flag.blueToken.child[index-1].license==0;
-				}
-				else{
-				movegatti(clicked,index);
-				flag.redToken.child[index-1].license=0;	
-				}
-				for(var i=0;i<number2;i++){
-					if(i!=index-1){
-						flag.blueToken.child[i].license=0;
-						var ntclickedid= clickedcolor+(i+1);
-						
-						var ntclicked= document.getElementById(ntclickedid);
-						ntclicked.style.borderColor="black";
-						ntclicked.style.zIndex= "1";
+				if (flag.blueToken.child[index-1].license==1){
+					if(flag.blueToken.child[index-1].outflag==0){
+						movetokenout(clicked,index);
+						flag.blueToken.child[index-1].license==0;
+					}
+					else{
+						movetoken(clicked,index);
+						flag.redToken.child[index-1].license=0;	
+					}
+					for(var i=0;i<number2;i++){
+						if(i!=index-1){
+							flag.blueToken.child[i].license=0;
+							var ntclickedid= clickedcolor+(i+1);
+							
+							var ntclicked= document.getElementById(ntclickedid);
+							ntclicked.style.borderColor="black";
+							ntclicked.style.zIndex= "1";
 						}
 					}
-	
+
 				}
 
 			}
 		}
-			
+
+	}
+
+	function loop(){
+		if (controlflag==1){
+			var active= "red";
+		}
+		if (controlflag==2){
+			if(number==2){
+				var active= "yellow";
+			}
+			else{
+				var active= "green";
+			}
+		}
+		if (controlflag==4){
+			var active= "blue";
+		}
+		if (controlflag==3){
+			var active= "yellow";
 		}
 
-		function loop(){
-				if (controlflag==1){
-					var active= "red";
-				}
-				if (controlflag==2){
-					if(number==2){
-					var active= "yellow";
-					}
-					else{
-					var active= "green";
-					}
-				}
-				if (controlflag==4){
-					var active= "blue";
-				}
-				if (controlflag==3){
-					var active= "yellow";
-				}
 
-
-			return active;
-		}
+		return active;
+	}
 			
-	var movegattiout = function(element,value){
+	var movetokenout = function(element,value){
 			this.element= element;
 			this.pos=value;
 			/*this.control= control;*/
@@ -414,7 +400,7 @@ this.calldice= function(noOfPlayers,noOfTokens){
 
 
 	
-	var movegatti = function(element,value){
+	var movetoken = function(element,value){
 
 		this.element=element;
 		this.val= value;
@@ -528,9 +514,7 @@ this.calldice= function(noOfPlayers,noOfTokens){
 		}
 		else{	
 			outer3.style.borderColor="#734315";
-			//indicator1.style.backgroundColor="red";
 			outer1.style.borderColor="red";
-			//info.style.backgroundColor="#FC062F";
 			info.innerHTML= "Red's Turn to Click and Roll the Dice";
 		}
 	}
@@ -538,15 +522,5 @@ this.calldice= function(noOfPlayers,noOfTokens){
 	var getrandom= function(){
 		return Math.floor(Math.random() * (7 - 1) + 1);
 	}
-
-	
-
-	
-  
-  
-
-
-	
-
 
 }
