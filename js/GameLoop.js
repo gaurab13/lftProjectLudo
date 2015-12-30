@@ -11,10 +11,9 @@ function GameLoop(){
 	var number=0;
 	var number2=0;
 	var flag= new Flags();
-	var ladderObj = new Ladders();	
+	
 
 this.calldice= function(noOfPlayers,noOfTokens){
-		//var dice= document.getElementsByClassName("dice")[0];
 		var dice = document.getElementById("dice");
 		dice.style.backgroundImage="url('images/one.png')";
 		number= noOfPlayers;
@@ -73,24 +72,15 @@ this.calldice= function(noOfPlayers,noOfTokens){
 				});
 		
 }
-
-
-
 		function rolldice(dice){
 			var gatti=[];
 			var elem= [];
-			//var ladderObj= new Ladders();
 			
 			if (controlflag==number){
 				controlflag=0;
 				
 			}
-
 			controlflag++;
-			
-
-
-
 			var active = loop();
 		 	step = getrandom();
 		 
@@ -222,7 +212,7 @@ this.calldice= function(noOfPlayers,noOfTokens){
 		}
 
 		var replyClick= function(){
-				//alert("Button clicked, id "+this.id);
+				
 				var currentid = this.id;
 				var length = currentid.length;
 				var index = currentid.charAt(length-1);
@@ -410,16 +400,14 @@ this.calldice= function(noOfPlayers,noOfTokens){
 			// /controlflag++;
 			element.style.borderColor="black";
 			console.log("the current controlflag was: "+ controlflag);
-			if(step==1||step==6||step==3){
+			if(step==1||step==6){
 			controlflag--;
 			console.log("your move again");
 			}
 			if(number2==4){
 			showactive();
 				}
-			//that.calldice();
 
-	
 	}
 
 
@@ -444,19 +432,19 @@ this.calldice= function(noOfPlayers,noOfTokens){
 		
 				
 			var temp1 = a.hittestForRed(element,number2);
-			console.log("direct here"+temp1);
+			
 			if(temp1!=0){
 			flag.redToken.child[temp1-1].outflag=0;
 			flag.redToken.child[temp1-1].license=0;
 			}
 			var temp2 =	a.hittestForBlue(element,number2);
-			console.log("direct here"+temp2);
+			
 			if(temp2!=0){
 			flag.blueToken.child[temp2-1].outflag=0;
 			flag.blueToken.child[temp2-1].license=0;
 			}
 			var temp3 = a.hittestForGreen(element,number2);
-			console.log("direct here"+temp3);
+			
 			if(temp3!=0){
 			flag.greenToken.child[temp3-1].outflag=0;
 			flag.greenToken.child[temp3-1].license=0;
@@ -482,8 +470,7 @@ this.calldice= function(noOfPlayers,noOfTokens){
 	
 		element.style.borderColor="black";
 		element.style.zIndex= "1";
-		//that.calldice();
-		//showactive(controlflag);
+		
 		
 	}
 	var showactive= function(){
@@ -507,15 +494,14 @@ this.calldice= function(noOfPlayers,noOfTokens){
 			outer4.style.borderColor="#734315";
 			outer1.style.borderColor="red";
 			info.innerHTML= "Red's Turn to Click and Roll the Dice";
-			//indicator1.style.backgroundColor="red";
-			info.style.backgroundColor="#FC062F";
+			
 		}
 		else if(activeindicator==2){
 			if(number==2){
 			outer1.style.borderColor="#734315";
 			//indicator1.style.backgroundColor="yellow";
 			outer4.style.borderColor="yellow";
-			info.style.backgroundColor="#yellow";
+			//info.style.backgroundColor="#yellow";
 			info.innerHTML= "Yellow's Turn to Click and Roll the Dice";
 			}
 			else{
@@ -523,28 +509,28 @@ this.calldice= function(noOfPlayers,noOfTokens){
 			outer2.style.borderColor="green";
 			info.innerHTML= "Green's Turn to Click and Roll the Dice";
 			//indicator1.style.backgroundColor="green";
-			info.style.backgroundColor="#00d11c";
+			//info.style.backgroundColor="#00d11c";
 			}
 		}
 		else if(activeindicator==3){
 			outer2.style.borderColor="#734315";
 			//indicator1.style.backgroundColor="yellow";
 			outer4.style.borderColor="yellow";
-			info.style.backgroundColor="yellow";
+			//info.style.backgroundColor="yellow";
 			info.innerHTML= "Yellow's Turn to Click and Roll the Dice";
 		}
 		else if(activeindicator==4){
 			outer4.style.borderColor="#734315";
 			//indicator1.style.backgroundColor="blue";
 			outer3.style.borderColor="blue";
-			info.style.backgroundColor="blue";
+			//info.style.backgroundColor="blue";
 			info.innerHTML= "Blue's Turn to Click and Roll the Dice";
 		}
 		else{	
 			outer3.style.borderColor="#734315";
 			//indicator1.style.backgroundColor="red";
 			outer1.style.borderColor="red";
-			info.style.backgroundColor="#FC062F";
+			//info.style.backgroundColor="#FC062F";
 			info.innerHTML= "Red's Turn to Click and Roll the Dice";
 		}
 	}
@@ -552,6 +538,13 @@ this.calldice= function(noOfPlayers,noOfTokens){
 	var getrandom= function(){
 		return Math.floor(Math.random() * (7 - 1) + 1);
 	}
+
+	
+
+	
+  
+  
+
 
 	
 

@@ -11,36 +11,46 @@ function SnakeLoop(){
 	var number2=0;
 	var flag= new Flags();
 	var dragObj= null;
+	var dragObj1= null;
 	var tilewidth2= 45;
 	var ladderindex=0;
 	var l= new Ladders();
+	
 
 	
 var setSnakeBoard=function(){
 	var wrap = document.getElementById("main-wrapper");
-	var ladder= [];
+	var info= document.getElementById("status");
+		info.style.display="none";
+	var item= [];
 	
-		for(var i=1;i<5;i++){
-		ladder[i]= document.createElement("div");
-		ladder[i].setAttribute("class","ladder");
-		ladder[i].setAttribute("id","ladder"+i);
-		wrap.appendChild(ladder[i]);
-		//ladder[i].setAttribute('draggable', true);
-		dragLadders(ladder[i],0,i);
+		for(var i=1;i<9;i++){
+		item[i]= document.createElement("div");
+		item[i].setAttribute("class","item");
+		item[i].setAttribute("id","item"+i);
+		wrap.appendChild(item[i]);
 
-		  	}
-
-		for(var i=1;i<5;i++){
-		snake[i]= document.createElement("div");
-		snake[i].setAttribute("class","snakes");
-		snake[i].setAttribute("id","snake"+i);
-		wrap.appendChild(snake[i]);
-		//ladder[i].setAttribute('draggable', true);
-		dragSnakes(snake[i],0,i);
-		
-		  	}
+		dragLadders(item[i],0);
 		}
-var dragLadders= function(ladderObj,a, i){
+	var info= document.createElement("div");
+	info.setAttribute("id","infoSnake");
+	info.innerHTML="Have Fun Dragging the Snakes and Ladders and Designing your Own Board";
+	wrap.appendChild(info);
+
+	var info2= document.createElement("div");
+	info2.setAttribute("id","infoSnake2");
+	info2.innerHTML="Or choose the default Board";
+	wrap.appendChild(info2);
+
+	var defaultPosition= document.createElement("button");
+	defaultPosition.setAttribute("id","defaultPosition");
+	defaultPosition.innerHTML="Set Default";
+	defaultPosition.onclick= setDefaultPosition ;
+	wrap.appendChild(defaultPosition);	
+	}
+
+
+var dragLadders= function(ladderObj,a){
 	
 	
 	ladderObj.onmousedown = function(){
@@ -49,141 +59,120 @@ var dragLadders= function(ladderObj,a, i){
     	}
     	else{
     		dragObj = null;
+    		return;
     	}
     }
-
-	
-
     document.onmouseup = function(e){
-    
     dragObj = null;
 	};
 
 	document.onmousemove = function(e){
     var x = e.pageX;
     var y = e.pageY;
-
 	
-    if(dragObj== null)
+	
+    if(dragObj== null){
         return;
-
-    dragObj.style.left = x +"px";
-   	dragObj.style.top= y +"px";
-
-   	var xcordTest= (parseInt(dragObj.style.left)-450)/45;
-   	var ycordTest= Math.floor((parseInt(dragObj.style.top)-10)/45); 
-   	var xcordFloor = Math.floor(xcordTest);
-   	if((xcordTest-xcordFloor)> 0.7){
-   	var xcord1 = Math.ceil(xcordTest);
-
-   	}
-   	else{
-   	var xcord1 = xcordFloor;
-   	}
-   	var xcord2 = xcord1;
-   	var ycord1= ycordTest;
-   	var ycord2= ycordTest+ 2;
-   	var currentid= dragObj.id;
-
-   	console.log("id is "+ currentid);
-    //console.log("x coordinate of tail"+Math.floor(parseInt(dragObj.style.left)-450)/45);
-    console.log("y coorsdinate top"+ ycord1);
-    console.log("y coordinate bottom"+ ycord2);
-    var index= currentid.charAt(6)
-    l.ladderPos.child[index-1].x1= xcord1;
-    l.ladderPos.child[index-1].x2= xcord2;
-  	l.ladderPos.child[index-1].y1= ycord1;
-    l.ladderPos.child[index-1].y2= ycord2;
-     console.log("x1 of child  "+(index-1)+"is  "+l.ladderPos.child[index-1].x1);
-
-    //setPosition(xcord1,xcord2,ycord1,ycord2,i);
-    console.log("y coordinate bottom from flags"+ l.ladderPos.child[0].y1);
-  
-	};
-}
-
-var dragSnakes= function(snakeObj,a, i){
-	
-	
-	snakeObj.onmousedown = function(){
-		if(a==0){
-       		dragObj = snakeObj;
-    	}
-    	else{
-    		dragObj = null;
-    	}
     }
+    var currentid= dragObj.id;
+	var index= currentid.charAt(4);
+    lengthItem= l.itemPos.child[index-1].dy*45;
 
-	
-
-    document.onmouseup = function(e){
-    
-    dragObj = null;
-	};
-
-	document.onmousemove = function(e){
-    var x = e.pageX;
-    var y = e.pageY;
-
-	
-    if(dragObj== null)
-        return;
-
+    if((y>=60)/*&&((y+lengthItem)<=540)*/){
     dragObj.style.left = x +"px";
    	dragObj.style.top= y +"px";
+	}
 
-   	var xcordTest= (parseInt(dragObj.style.left)-450)/45;
-   	var ycordTest= Math.floor((parseInt(dragObj.style.top)-10)/45); 
-   	var xcordFloor = Math.floor(xcordTest);
-   	if((xcordTest-xcordFloor)> 0.7){
-   	var xcord1 = Math.ceil(xcordTest);
+	
+	
+	console.log("x of "+ index + " is:"+x);
+	console.log("y of "+ index + " is:"+y);
+   	var xcordTest1= (parseInt(dragObj.style.left)-450+l.itemPos.child[index-1].dx1)/45;
+   	var xcordTest2= (parseInt(dragObj.style.left)-450+l.itemPos.child[index-1].dx2)/45;
+   	var ycordTest= Math.floor((parseInt(dragObj.style.top)-60)/45); 
 
-   	}
-   	else{
-   	var xcord1 = xcordFloor;
-   	}
-   	var xcord2 = xcord1;
+   	var xcordFloor1 = Math.floor(xcordTest1);
+   	var xcordFloor2 = Math.floor(xcordTest2);
+   	console.log("xcordTest1: "+xcordTest1);
+   	console.log("xcordTest2: "+xcordTest2);
+   	if(index<=4){
+   		if((xcordTest1-xcordFloor1)> 0.7){
+   		var xcord1 = Math.ceil(xcordTest1);
+   		}
+   		else{
+   		var xcord1 =  Math.floor(xcordTest1);	
+   		}
+
+   		if((xcordTest2-xcordFloor2)> 0.7){
+   		var xcord2 = Math.ceil(xcordTest2);
+   		}
+   		else{
+   		var xcord2 =  Math.floor(xcordTest2);	
+   		}
+  	}
+  	else{
+  		var xcord1 = Math.floor(xcordTest1);
+  		var xcord2 = Math.floor(xcordTest2);
+  	}
    	var ycord1= ycordTest;
-   	var ycord2= ycordTest+ 2;
-   	var currentid= dragObj.id;
 
+   	
+   
    	console.log("id is "+ currentid);
-    //console.log("x coordinate of tail"+Math.floor(parseInt(dragObj.style.left)-450)/45);
     console.log("y coorsdinate top"+ ycord1);
-    console.log("y coordinate bottom"+ ycord2);
-    var index= currentid.charAt(5)
-    l.snakePos.child[index-1].x1= xcord1;
-    l.snakePos.child[index-1].x2= xcord2;
-  	l.snakePos.child[index-1].y1= ycord1;
-    l.snakePos.child[index-1].y2= ycord2;
-     console.log("x1 of child  "+(index-1)+"is  "+l.snakePos.child[index-1].x1);
 
-    //setPosition(xcord1,xcord2,ycord1,ycord2,i);
-    console.log("y coordinate bottom from flags"+ l.snakePos.child[0].y1);
+    var ycord2= ycordTest+ l.itemPos.child[index-1].dy;
+    
+   
+    console.log("y coordinate bottom"+ ycord2);
+    l.itemPos.child[index-1].x1= xcord1;
+    l.itemPos.child[index-1].x2= xcord2;
+  	l.itemPos.child[index-1].y1= ycord1;
+    l.itemPos.child[index-1].y2= ycord2;
+    console.log("x1 of child  "+(index-1)+"is  "+l.itemPos.child[index-1].x1);
+     console.log("x2 of child  "+(index-1)+"is  "+l.itemPos.child[index-1].x2);
+    console.log("y coordinate bottom from flags"+ l.itemPos.child[0].y1);
   
 	};
 }
-		
+
+var setDefaultPosition= function(){
+	var item= [];
+	console.log("clicked");
+	var itemInit= new InitialPosition();
+	for( var i=1;i<9;i++){
+		item[i]= document.getElementById("item"+i);
+		var x= itemInit.initPosItem.child[i-1].x;
+		var y= itemInit.initPosItem.child[i-1].y;
+		item[i].style.left=x*tilewidth+450+"px";
+		item[i].style.top= y*tilewidth+60+"px";
+		dragLadders(item[i],1);
+	}
+	
+	setDisplayOff();
+	
+}
 
 
 this.calldice= function(noOfPlayers,noOfToken){
 		setSnakeBoard();
-		//var dice= document.getElementsByClassName("dice")[0];
 		var dice = document.getElementById("dice");
+
 		dice.style.backgroundImage="url('images/one.png')";
 		number= noOfPlayers;
 		number2= noOfToken;
 		console.log("number of players"+ number);
 		
 		console.log("ROLL THE DICE!!!");
-		
 		showactive();
+		
 
-		//controlflag++;
+		
 
 		dice.addEventListener('click',function(event){
 			var initial=1;
-			
+				setDisplayOff();
+
 				var intervalid1 = setInterval(function(){
 					if(initial%6==1){
 						dice.style.backgroundImage="url('images/one.png')";
@@ -212,25 +201,19 @@ this.calldice= function(noOfPlayers,noOfToken){
 
 					}
 
-				},50);
-
-
-
-				  
-00
-				});
-		
+				},50);	  
+			});		
 }
 
 		function rolldice(dice){
 			var gatti=[];
-			var elem=[];
-			if(number2==1){
-			for(var i=1;i<5;i++){
-			elem= document.getElementById("ladder"+i);
-			dragLadders(elem,1,i);
+			var elem = [];
+			
+			for(var i=1;i<9;i++){
+				elem= document.getElementById("item"+i);
+				dragLadders(elem,1);
 			}
-		}
+			
 			
 			if (controlflag==number){
 				controlflag=0;
@@ -282,13 +265,10 @@ this.calldice= function(noOfPlayers,noOfToken){
 
 				}
 				else if(controlflag==2){
-					if(number==2){
-					flag.yellowToken.child[i-1].license=1;
-					}
-					else{
+					
 					flag.greenToken.child[i-1].license=1;	
 					}
-				}
+				
 				else if(controlflag==3){
 					flag.yellowToken.child[i-1].license=1;
 				}
@@ -307,7 +287,7 @@ this.calldice= function(noOfPlayers,noOfToken){
 						flag.redToken.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
 						gatti[i].style.zIndex= "2";
-						indicatorflag=1;
+						
 					}
 					
 				}
@@ -317,7 +297,7 @@ this.calldice= function(noOfPlayers,noOfToken){
 						flag.greenToken.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
 						gatti[i].style.zIndex= "2";
-						indicatorflag=1;
+						
 						}
 					}
 										
@@ -327,7 +307,7 @@ this.calldice= function(noOfPlayers,noOfToken){
 						flag.yellowToken.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
 						gatti[i].style.zIndex= "2";
-						indicatorflag=1;
+						
 					}
 					
 				}
@@ -336,7 +316,7 @@ this.calldice= function(noOfPlayers,noOfToken){
 						flag.blueToken.child[i-1].license=1;
 						gatti[i].style.borderColor= "white";
 						gatti[i].style.zIndex= "2";
-						indicatorflag=1;
+						
 					}
 					
 				}
@@ -461,7 +441,6 @@ this.calldice= function(noOfPlayers,noOfToken){
 	var movegattiout = function(element,value){
 			this.element= element;
 			this.pos=value;
-			/*this.control= control;*/
 			
 			if (element.style.backgroundColor=="red"){
 				flag.redToken.child[pos-1].outflag=1;
@@ -506,23 +485,21 @@ this.calldice= function(noOfPlayers,noOfToken){
 
 			
 			var a = new Animate(board);
+			
 			a.animate(element,number2,step);
 			currentstep++;
 			if(currentstep==step+1){
 				clearInterval(intervalid);
 				
+			ladderTest(element);
+			ladderTest(element);
 			
+
 			var temp1 = a.hittestForRed(element,number2);
 			console.log("direct here"+temp1);
 			if(temp1!=0){
 			flag.redToken.child[temp1-1].outflag=0;
 			flag.redToken.child[temp1-1].license=0;
-			}
-			var temp2 =	a.hittestForBlue(element,number2);
-			console.log("direct here"+temp2);
-			if(temp2!=0){
-			flag.blueToken.child[temp2-1].outflag=0;
-			flag.blueToken.child[temp2-1].license=0;
 			}
 			var temp3 = a.hittestForGreen(element,number2);
 			console.log("direct here"+temp3);
@@ -530,17 +507,24 @@ this.calldice= function(noOfPlayers,noOfToken){
 			flag.greenToken.child[temp3-1].outflag=0;
 			flag.greenToken.child[temp3-1].license=0;
 			}
-			var temp4 =	a.hittestForYellow(element,number2);
+			
+			if(number>=3){
+				var temp4 =	a.hittestForYellow(element,number2);
 			if(temp4!=0){
 			flag.yellowToken.child[temp4-1].outflag=0;
 			flag.yellowToken.child[temp4-1].license=0;
 			}
-			//console.log("value of flags"+ l.ladderPos.child[0].y1);
-			
+			}
+			if(number==4){
+				var temp2 =	a.hittestForBlue(element,number2);
+			console.log("direct here"+temp2);
+			if(temp2!=0){
+			flag.blueToken.child[temp2-1].outflag=0;
+			flag.blueToken.child[temp2-1].license=0;
+			}
+		}
 				
-			ladderTest(element);
-			
-
+		
 				if(step==1||step==6){
 					controlflag--;
 					console.log("your move again");
@@ -560,25 +544,33 @@ this.calldice= function(noOfPlayers,noOfToken){
 	var getrandom= function(){
 		return Math.floor(Math.random() * (7 - 1) + 1);
 	}
-	var ladderTest= function(element3){
+
+var ladderTest= function(element3){
 	console.log("ladder tested");
 	//console.log("test value"+that.ladder.child[0].x2);
 	var left = parseInt(element3.style.left)/tilewidth2;
 	var top = parseInt(element3.style.top)/tilewidth2;
 	console.log("left value of gatt"+ left);
 	console.log("top value of gatt"+ top);
-	for(var i=0;i<4;i++){
-		var x1= l.ladderPos.child[i].x1;
-		
-		var x2= l.ladderPos.child[i].x2;
-		var y1= l.ladderPos.child[i].y1;
-		var y2= l.ladderPos.child[i].y2;
+	for(var i=0;i<8;i++){
+		var x1= l.itemPos.child[i].x1;	
+		var x2= l.itemPos.child[i].x2;
+		var y1= l.itemPos.child[i].y1;
+		var y2= l.itemPos.child[i].y2;
 		console.log(x2+":"+y1+":"+y2);
-		if((left==x1)&&(top==y2)){
-			element3.style.left= x2*tilewidth2 +"px";
-			element3.style.top= y1*tilewidth2 +"px";
-			//element3.style.backgroundColor="purple";
-		console.log("HITTTT");
+		if(i<4){
+			if((left==x2)&&(top==y2)){
+				element3.style.left= x1*tilewidth2 +"px";
+				element3.style.top= y1*tilewidth2 +"px";	
+				console.log("HITTTT");
+			}
+		}
+		else{
+			if((left==x1)&&(top==y1)){
+				element3.style.left= x2*tilewidth2 +"px";
+				element3.style.top= y2*tilewidth2 +"px";
+				console.log("HITTTT");
+			}
 		}	
 	}
 }
@@ -590,11 +582,13 @@ var showactive= function(){
 		}
 		else{
 		var activeindicator= controlflag+1;
-			}
+		}
 
 		var info= document.getElementById("status");
+		info.style.display="block";
 		if(activeindicator==1){
 			info.innerHTML= "Red's Turn to Click and Roll the Dice";
+
 		}
 		else if(activeindicator==2){
 			info.innerHTML= "Green's Turn to Click and Roll the Dice";
@@ -607,8 +601,19 @@ var showactive= function(){
 		}
 		else{	
 			info.innerHTML= "Red's Turn to Click and Roll the Dice";
+
 		}
 	}
+
+var setDisplayOff= function(){
+	var info1= document.getElementById("infoSnake");
+	var info2= document.getElementById("infoSnake2");
+	var defButton= document.getElementById("defaultPosition");
+	
+	info1.style.display="none";
+	info2.style.display="none";
+	defButton.style.display="none";
+}
 
 
 }

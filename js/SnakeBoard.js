@@ -24,9 +24,6 @@ function SnakeBoard(){
 			for (j=0;j<10;j++) {
 		  		arr[i][j]= document.createElement("div");
 		  		arr[i][j].setAttribute("class","tiles2");
-
-		  		
-
 		  		arr[i][j].setAttribute("id",count);
 
 		  		if(i % 2==0){
@@ -45,6 +42,11 @@ function SnakeBoard(){
 		  	//	arr[i][j].style.backgroundColor= "gray";
 		  		board.appendChild(arr[i][j]);
 		  		count++;
+		  		if(count>101){
+		  			arr[i][j].innerHTML= null;
+		  			//arr[i][j].style.backgroundColor= "#734315";
+
+		  		}
 		  		//index--;
 		  	}
 		  	if(i%2==0){

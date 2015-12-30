@@ -37,7 +37,7 @@ this.animate= function(element1,val,step){
 					
 					var index= routeno.pathSnake.indexOf(count);
 
-					if((index+step)<routeno.pathSnake.indexOf(1)){
+					if((index+diceValue)<=routeno.pathSnake.indexOf(1)){
 					var nextindex= routeno.pathSnake[index+1];
 					console.log("next point is "+ nextindex + "index was "+index + "count was"+count);
 					var tile = document.getElementById(nextindex);
@@ -47,42 +47,50 @@ this.animate= function(element1,val,step){
 					}
 					else{
 						if (currentcolor=="red"){
-							var index= routeno.pathred.indexOf(count);
-							var nextindex= routeno.pathred[index+1];
+							var index= routeno.pathRed.indexOf(count);
+							console.log(index);
+							if((index+diceValue)<=routeno.pathRed.indexOf(112)){
+							var nextindex= routeno.pathRed[index+1];
 							console.log("next point is "+ nextindex + "count was "+count);
 							var tile = document.getElementById(nextindex);
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
-
+							}
 						}
 						if (currentcolor=="green"){
-							var index= routeno.pathgreen.indexOf(count);
-							var nextindex= routeno.pathgreen[index+1];
+							
+							var index= routeno.pathGreen.indexOf(count);
+							if((index+diceValue)<=routeno.pathGreen.indexOf(98)){
+							var nextindex= routeno.pathGreen[index+1];
 							console.log("next point is "+ nextindex + "count was "+count);
 							var tile = document.getElementById(nextindex);
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
-
+							}
 						}
 						if (currentcolor=="yellow"){
-							var index= routeno.pathyellow.indexOf(count);
-							var nextindex= routeno.pathyellow[index+1];
+							
+							var index= routeno.pathYellow.indexOf(count);
+							if((index+diceValue)<=routeno.pathYellow.indexOf(114)){
+							var nextindex= routeno.pathYellow[index+1];
 							console.log("next point is "+ nextindex + "count was "+count);
 							var tile = document.getElementById(nextindex);
 							
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
-
+							}
 						}
 						if (currentcolor=="blue"){
-							var index= routeno.pathblue.indexOf(count);
-							var nextindex= routeno.pathblue[index+1];
+							
+							var index= routeno.pathBlue.indexOf(count);
+							if((index+diceValue)<=routeno.pathBlue.indexOf(128)){
+							var nextindex= routeno.pathBlue[index+1];
 							console.log("next point is "+ nextindex + "count was "+count);
 							var tile = document.getElementById(nextindex);
 							
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
-
+							}
 						}
 					}
 
