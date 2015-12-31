@@ -20,7 +20,7 @@ function LudoBoard(){
 				  		arr[i][j].style.top= i*tilewidth + "px";
 				  		arr[i][j].style.backgroundColor= "#white";
 				  		board.appendChild(arr[i][j]);
-				  		arr[i][j].innerHTML=count;
+				  		
 				  		
 				  		if(i <=5 && j <=5){
 				  			arr[i][j].style.backgroundColor= "#87CEFA";
