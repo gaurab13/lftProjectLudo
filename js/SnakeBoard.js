@@ -1,5 +1,6 @@
 function SnakeBoard(){
  	var container= document.getElementById("main-container");
+	var wrap= document.getElementById("main-wrapper");
 	var tilewidth= 45;
 	var that= this;
 	var board= document.createElement("div");
@@ -9,6 +10,9 @@ function SnakeBoard(){
 	container.appendChild(board);
 	
 	this.createBoard2 = function() {
+		wrap.style.backgroundImage= "url(images/snakebackground1.png)";
+		wrap.style.backgroundRepeat= "no-repeat";
+		wrap.style.backgroundPosition= "center center";
 		var arr= [];
 		var count=1;
 		var index =101;
@@ -45,6 +49,8 @@ function SnakeBoard(){
 		  	index-=9;
 		  	}
 		}
+
+	
 	}
 
 }

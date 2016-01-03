@@ -19,6 +19,7 @@
 			<div id="restart">
 			</div>  
 		</div>
+		<script src="js/preloader.js"></script>
 		<script src="js/Main.js"></script>
 		<script src="js/LudoBoard.js"></script>
 		<script src="js/SnakeBoard.js"></script>
@@ -33,11 +34,11 @@
 		<script src="js/Ladders.js"></script>
 
 
-		<script>
-			var home = new Main();
-			home.init();
-
-
+		<script>		
+			window.onload = function() {
+			  var preloader = new Preloader();
+			  preloader.init();
+			}	
 		</script>
 
 	</body>

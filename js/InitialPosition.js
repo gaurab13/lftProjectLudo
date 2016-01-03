@@ -7,14 +7,14 @@ function InitialPosition(){
 				},
 				{
 				x: 1,
-				y: 4	
+				y: 1	
 				},
 				{
 				x: 4,
 				y: 1	
 				},
 				{
-				x: 4,
+				x: 1,
 				y: 4	
 				}]
 	} 
@@ -25,14 +25,14 @@ function InitialPosition(){
 				},
 				{
 				x: 10,
-				y: 4	
+				y: 1	
 				},
 				{
 				x: 13,
 				y: 1	
 				},
 				{
-				x: 13,
+				x: 10,
 				y: 4	
 				}]
 	} 
@@ -43,14 +43,14 @@ function InitialPosition(){
 				},
 				{
 				x: 10,
-				y: 13	
+				y: 10	
 				},
 				{
 				x: 13,
 				y: 10	
 				},
 				{
-				x: 13,
+				x: 10,
 				y: 13	
 				}]
 	} 
@@ -61,14 +61,14 @@ function InitialPosition(){
 				},
 				{
 				x: 1,
-				y: 13	
+				y: 10	
 				},
 				{
 				x: 4,
 				y: 10	
 				},
 				{
-				x: 4,
+				x: 1,
 				y: 13	
 				}]
 	} 

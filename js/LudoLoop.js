@@ -476,22 +476,22 @@ function LudoLoop(){
 		var outer3= document.getElementById("outer3");
 		var outer4= document.getElementById("outer4");
 		if(activeindicator==1){
-			outer3.style.borderColor="#734315";
-			outer4.style.borderColor="#734315";
+			outer3.style.borderColor="#a3531e";
+			outer4.style.borderColor="#a3531e";
 			outer1.style.borderColor="red";
 			info.innerHTML= "Red's Turn to Click and Roll the Dice";
 			
 		}
 		else if(activeindicator==2){
 			if(number==2){
-			outer1.style.borderColor="#734315";
+			outer1.style.borderColor="#a3531e";
 			//indicator1.style.backgroundColor="yellow";
 			outer4.style.borderColor="yellow";
 			//info.style.backgroundColor="#yellow";
 			info.innerHTML= "Yellow's Turn to Click and Roll the Dice";
 			}
 			else{
-			outer1.style.borderColor="#734315";
+			outer1.style.borderColor="#a3531e";
 			outer2.style.borderColor="green";
 			info.innerHTML= "Green's Turn to Click and Roll the Dice";
 			//indicator1.style.backgroundColor="green";
@@ -499,21 +499,21 @@ function LudoLoop(){
 			}
 		}
 		else if(activeindicator==3){
-			outer2.style.borderColor="#734315";
+			outer2.style.borderColor="#a3531e";
 			//indicator1.style.backgroundColor="yellow";
 			outer4.style.borderColor="yellow";
 			//info.style.backgroundColor="yellow";
 			info.innerHTML= "Yellow's Turn to Click and Roll the Dice";
 		}
 		else if(activeindicator==4){
-			outer4.style.borderColor="#734315";
+			outer4.style.borderColor="#a3531e";
 			//indicator1.style.backgroundColor="blue";
 			outer3.style.borderColor="blue";
 			//info.style.backgroundColor="blue";
 			info.innerHTML= "Blue's Turn to Click and Roll the Dice";
 		}
 		else{	
-			outer3.style.borderColor="#734315";
+			outer3.style.borderColor="#a3531e";
 			outer1.style.borderColor="red";
 			info.innerHTML= "Red's Turn to Click and Roll the Dice";
 		}

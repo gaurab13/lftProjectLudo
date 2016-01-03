@@ -100,17 +100,18 @@ function Main(){
 		option2.style.display="none";
 		option3.style.display="none";
 
-		ludo.style.display="block";
-		snake.style.display="block";
+		ludoOption.style.display="block";
+		snakeOption.style.display="block";
 
-		ludo.onclick= function(){
+		ludoOption.onclick= function(){
 			gameFlag= 4;
-			setDisplay();
+			animate(ludoOption,snakeOption);
+			
 		
 		}
-		snake.onclick=function(){
+		snakeOption.onclick=function(){
 			gameFlag= 1;
-			setDisplay();
+			animate(snakeOption,ludoOption);
 		
 		}
 	}
@@ -126,6 +127,42 @@ function Main(){
 		snake.style.display="none";
 	}
 
+	var animate= function(elem1,elem2){
+	
+	var element= document.getElementById(elem1.id);
+	var element2= document.getElementById(elem2.id);
+	console.log("here");
+	
+	
+	if(elem1.id=="ludo"){
+		var left= 450;	
+		var dx=5;
+	}
+	else{
+		var left= 700;	
+		var dx=-5;
+	}
+	
+	var count=0;
+	var intervalid= setInterval(function(){
+		count++;
+		if(count<=20){
+			left= left- dx;
+			element.style.left=left+"px";
+		}
+		else{
+			left+=2*dx;
+			element.style.left=left+"px";
+		}
+	
 
+	if(count==2){
+		clearInterval(intervalid);
+		setDisplay();
+		
+	}
+
+	},100);
+}
 
 }
