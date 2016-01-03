@@ -4,80 +4,140 @@
 	height:643px;
 	padding-top: 50px;
 	background-color:#87CEFA;
-	/*background-color:#734315;*/
+	background-image :url("../images/background.png");
 }
 #main-container{
 	position:relative;
 	margin:0 auto;
-	width:500px;
-	padding:10px 0;
-	background-color:#87CEFA;
-	border-radius:100%;
-	border: 10px solid #734315;
+	width:450px;
+	border: 10px solid #311306;
 }
 .gameboard{
 	position:relative;
 	width:450px;
 	min-height:450px;
-	background-color: #6a310d;
-	background-color:#87CEFA;
-
-	margin:0 auto;
-	
+	border-radius:10%;
+	margin:0 auto;	
 }
 #s-board{
 	height:500px;
-	
-
 }
 #home{
 	width:128px;
 	height:128px;
-	background-image :url("../images/home-icon2.png");
+	background-image :url("../images/home-icon.png");
 	position: absolute;
 	background-repeat: no-repeat;
-	left:188px;
-	top:188px;
-
+	left:180px;
+	top:180px;
+	z-index:1;
 }
 .outer{
-	width: 170px;
-	height: 170px;
+	width: 140px;
+	height: 140px;
 	position:absolute;
-	opacity:1;
-	border-radius: 100%;
+	z-index:1;
+	top:14px;
+	left:14px;
+	border:6px solid #a3531e;	
+}
+.outermost{
+	width: 168px;
+	height: 168px;
+	position:absolute;
 	z-index:1;
 	top:0px;
 	left:0px;
-	border:4px solid #734315;
-	/*background-color: #FC062F;
-	*/
-
+	border:6px solid #a3531e;	
+}
+.outercircle{
+	width:130px;
+	height:130px;
+	position:absolute;
+	left:25px;
+	top:25px;
+	border-radius:100%;
+	background:url("../images/outercircle-img.png") no-repeat;
+}
+.triangle{
+	width:0px;
+	height:0px;
+	position:absolute;
+	
+}
+#triangle1{
+	border-left: 44px solid transparent;
+	border-right: 44px solid transparent;
+	border-top: 44px solid green;
+	left:180px;
+	top:180px;
+}
+#triangle2{
+	border-top: 44px solid transparent;
+	border-bottom: 44px solid transparent; 
+	border-right:44px solid yellow;
+	left:225px;
+	top:180px;
+}
+#triangle3{
+	border-left: 44px solid transparent;
+	border-right: 44px solid transparent;	
+	border-bottom: 44px solid blue;
+	left:180px;
+	top:225px;
+}
+#triangle4{
+	border-top: 44px solid transparent;
+	border-bottom: 44px solid transparent;	
+	border-left: 44px solid red;
+	left:180px;
+	top:180px;
+}
+#outercircle2{
+	left:295px;
+}
+#outercircle3{
+	left:25px;
+	top:295px;
+}
+#outercircle4{
+	left:295px;
+	top:295px;
 }
 #outer2{
-	left:271px;
-	/*background-color: #00d11c;*/
+	left:284px;
+	
 }
 #outer3{
-	left:0px;
-	top:271px;
-	/*background-color: #00ad99;*/
+	left:14px;
+	top:284px;	
 }
 
 #outer4{
-	left:271px;
-	top:271px;
-	/*background-color: #FFFF66;*/
+	left:284px;
+	top:284px;
+	
+}
+#outermost2{
+	left:270px;
+	
+}
+#outermost3{
+	left:0px;
+	top:270px;	
 }
 
+#outermost4{
+	left:270px;
+	top:270px;
+	
+}
 
 .tiles{
 	height:29px;
 	width:29px;
-	background-color: #5f84ce;
-	/*border:1px solid black;*/
-	position: absolute;
-	border-radius: 100%;
+	position: absolute;	
+
 }
 .tiles2{
 	height:44px;
@@ -86,18 +146,24 @@
 	font-weight:bold;
 	border:1px solid black;
 	position: absolute;
-
-	/*border-radius:100%;*/
 }
 .gatti{
 	width:28px;
 	height:28px;
 	position:absolute;
-	z-index:1;
+	z-index:2;
 	border-radius:100%;
 	border-width:2px;
 	border-style:solid;
 	border-color: black;
+}
+.tokenHolder{
+	width:30px;
+	height:30px;
+	position:absolute;
+	background-color:white;
+	
+	border-radius:100%;
 }
 .token{
 	width:38px;
@@ -150,7 +216,7 @@ top:100px;
 	height:40px;
 	background-color: #87CEFA;
 	border:2px solid black;
-	
+	display:none;
 	color:black;
 	text-align:center;
 	line-height: 40px;
@@ -171,21 +237,22 @@ top:100px;
 .game{
 	position:absolute;
 	width:150px;
-	height:40px;
+	height:150px;
 	line-height: 40px;
 	text-align:center;
 	color:black;
 	display:block;
 	background-color: #87CEFA;
 	border:1px solid black;
+	border-radius:10%;
 }
 #ludo{
-	left:50px;
-	top:40px;
+	left:450px;
+	top:220px;
 }
 #snake{
-	left:250px;
-	top:40px;
+	left:700px;
+	top:220px;
 }
 
 .item{
@@ -299,5 +366,11 @@ top:100px;
 	border:1px solid black;
 	display:none;
 	
+}
+
+.loading-percent{
+  font-size: 60px;
+  text-align: center;
+  padding: 100px;
 }
 

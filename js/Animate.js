@@ -110,8 +110,14 @@ this.hittestForRed=function(element2,num){
 			else{
 				var initx = initPosition.posRed.child[k-1].x;
 				var inity = initPosition.posRed.child[k-1].y;
-				testSubject.style.left= initx*tilewidth2 + "px";
-				testSubject.style.top= inity*tilewidth2 + "px";
+				if(k%2==0){
+					testSubject.style.left= initx*tilewidth2+45 + "px";
+					testSubject.style.top= inity*tilewidth2 + "px"
+				}
+				else{
+					testSubject.style.left= initx*tilewidth2 + "px";
+					testSubject.style.top= inity*tilewidth2+45 + "px"
+				}
 				}
 			return k;
 			}
@@ -144,8 +150,15 @@ this.hittestForBlue=function(element2,num){
 			else{
 			var initx = initPosition.posBlue.child[k-1].x;
 			var inity = initPosition.posBlue.child[k-1].y;
-			testSubject.style.left= initx*tilewidth2 + "px";
-			testSubject.style.top= inity*tilewidth2 + "px";
+
+			if(k%2==0){
+					testSubject.style.left= initx*tilewidth2+45 + "px";
+					testSubject.style.top= inity*tilewidth2 + "px"
+				}
+				else{
+					testSubject.style.left= initx*tilewidth2 + "px";
+					testSubject.style.top= inity*tilewidth2+45 + "px"
+				}
 			}
 			return k;
 		}
@@ -171,14 +184,20 @@ this.hittestForGreen=function(element2,num){
 				var initx = initPosition.initPosSnake.child[1].x;
 				var inity = initPosition.initPosSnake.child[1].y;
 				testSubject.style.left= initx*tilewidth1 + "px";
-				testSubject.style.top= inity*tilewidth2 + "px";
+				testSubject.style.top= inity*tilewidth1 + "px";
 
 				}
 				else{
 				var initx = initPosition.posGreen.child[k-1].x;
 				var inity = initPosition.posGreen.child[k-1].y;
-				testSubject.style.left= initx*tilewidth2 + "px";
-				testSubject.style.top= inity*tilewidth2 + "px";
+				if(k%2==0){
+					testSubject.style.left= initx*tilewidth2+45 + "px";
+					testSubject.style.top= inity*tilewidth2 + "px"
+				}
+				else{
+					testSubject.style.left= initx*tilewidth2 + "px";
+					testSubject.style.top= inity*tilewidth2+45 + "px"
+				}
 				}
 				return k;
 			}	
@@ -211,8 +230,14 @@ this.hittestForYellow=function(element2,num){
 				else{
 					var initx = initPosition.posYellow.child[k-1].x;
 					var inity = initPosition.posYellow.child[k-1].y;
+					if(k%2==0){
+					testSubject.style.left= initx*tilewidth2+45 + "px";
+					testSubject.style.top= inity*tilewidth2 + "px"
+				}
+				else{
 					testSubject.style.left= initx*tilewidth2 + "px";
-					testSubject.style.top= inity*tilewidth2 + "px";
+					testSubject.style.top= inity*tilewidth2+45 + "px"
+				}
 				}
 				return k;
 			}
