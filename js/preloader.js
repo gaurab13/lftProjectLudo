@@ -1,15 +1,16 @@
 function Preloader() {
-  //var view = document.getElementsByTagName("body")[0];
-  var view= document.getElementById("main-wrapper");
+  
   var load;
   var imageSources;
   var that = this;
   this.init = function() {
-    load = document.createElement("div");
-    load.setAttribute("class","loading-percent");
+    var status= document.getElementById("status");
+    status.style.display="none";
+    document.getElementById("main-container").style.display="none";
+    load= document.getElementsByClassName("loading-percent")[0];
     load.innerHTML= "0%";
 
-    view.appendChild(load);
+    //view.appendChild(load);
 
     imageSources = {
       1: 'images/one.png',
@@ -27,6 +28,7 @@ function Preloader() {
       13: 'images/snake5.png',
       14: 'images/star.png',
       15: 'images/outercircle-img.png',
+      16: 'images/background.png'
     }
 
     that.loadImages(imageSources);
@@ -51,7 +53,7 @@ function Preloader() {
         load.innerHTML= percentage+"%";
         if (loadedImages >= totalImages) {
           console.log("loading done");
-        
+          load.style.display="none";
           that.initMainApp();
         }
       }

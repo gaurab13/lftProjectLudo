@@ -4,10 +4,11 @@ function LudoBoard(){
 
 	var tilewidth= 30;
 	this.createBoard = function() {
+		wrap.style.backgroundImage= "url(images/background.png)";
 		var board= document.createElement("div");
 		board.setAttribute("class","gameboard");
 		board.setAttribute("id","l-board");
-		container.appendChild(board)
+		container.appendChild(board);
 		//wrap.style.backgroundImage= "url(images/green-background.png)";
 		var arr= [];
 		var count=1;
@@ -21,8 +22,9 @@ function LudoBoard(){
 				  		arr[i][j].style.left= j*tilewidth + "px";
 				  		arr[i][j].style.top= i*tilewidth + "px";
 				  		arr[i][j].style.backgroundColor= "white";
-				  		board.appendChild(arr[i][j]);  		
-				  	if(i<=5 && j<=5){
+				  		board.appendChild(arr[i][j]);
+				  		//arr[i][j].innerHTML=count;	  		
+				  	if(i <=5 && j <=5){
 				  			arr[i][j].style.backgroundColor= "white";
 
 				  		}
