@@ -1,5 +1,6 @@
 function Preloader() {
-  var view = document.getElementsByTagName("body")[0];
+  //var view = document.getElementsByTagName("body")[0];
+  var view= document.getElementById("main-wrapper");
   var load;
   var imageSources;
   var that = this;
@@ -49,7 +50,8 @@ function Preloader() {
         percentage = Math.floor((loadedImages * 100) / totalImages);
         load.innerHTML= percentage+"%";
         if (loadedImages >= totalImages) {
-         load.style.display="none";
+          console.log("loading done");
+        
           that.initMainApp();
         }
       }
