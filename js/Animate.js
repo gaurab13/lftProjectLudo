@@ -11,6 +11,7 @@ this.animate= function(element1,val,step){
 	var diceValue= step;
 	var value =val;
 	var currentcolor= element1.style.backgroundColor;
+	var audio= document.getElementById("audio2");
 	if(value==1){		
 	var y= parseInt(element1.style.left)/tilewidth1;
 	var x= parseInt(element1.style.top)/tilewidth1;
@@ -35,6 +36,8 @@ this.animate= function(element1,val,step){
 						var tile = document.getElementById(nextindex);
 						element1.style.left= parseInt(tile.style.left)+"px";
 						element1.style.top= parseInt(tile.style.top)+"px";
+						
+						return nextindex;
 						}
 					
 					}
@@ -48,6 +51,7 @@ this.animate= function(element1,val,step){
 							var tile = document.getElementById(nextindex);
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
+							
 							return nextindex;
 							}
 
@@ -107,6 +111,8 @@ this.hittestForRed=function(element2,num){
 		var testTop= parseInt(testSubject.style.top);
 		if((left==testLeft)&&(top==testTop)){
 			console.log("HITTT");
+			
+			audio.play();
 			if(num==1){
 				var initx = initPosition.initPosSnake.child[0].x;
 				var inity = initPosition.initPosSnake.child[0].y;
@@ -146,6 +152,8 @@ this.hittestForBlue=function(element2,num){
 		var testTop= parseInt(testSubject.style.top);
 		if((left==testLeft)&&(top==testTop)){
 			console.log("HITTT");
+	
+			audio.play();
 			if(num==1){
 			var initx = initPosition.initPosSnake.child[3].x;
 			var inity = initPosition.initPosSnake.child[3].y;
@@ -186,6 +194,7 @@ this.hittestForGreen=function(element2,num){
 			var testLeft= parseInt(testSubject.style.left);
 			var testTop= parseInt(testSubject.style.top);
 			if((left==testLeft)&&(top==testTop)){
+				audio.play();
 				if(num==1){
 				var initx = initPosition.initPosSnake.child[1].x;
 				var inity = initPosition.initPosSnake.child[1].y;
@@ -227,6 +236,8 @@ this.hittestForYellow=function(element2,num){
 			var testTop= parseInt(testSubject.style.top);
 				console.log(testLeft+":"+testTop);
 			if((left==testLeft)&&(top==testTop)){
+				
+				audio.play();
 				if(num==1){
 					var initx = initPosition.initPosSnake.child[2].x;
 					var inity = initPosition.initPosSnake.child[2].y;
@@ -260,7 +271,7 @@ this.hittestForYellow=function(element2,num){
 
 this.finishTest= function(value){
 	
-	if((value==112)||(value==114)||(value==98)||(value==128)){
+	if((value==112)||(value==114)||(value==98)||(value==128)||(value==1)){
 		return 1;
 	}
 	else{
@@ -268,6 +279,15 @@ this.finishTest= function(value){
 	}
 }
 
+this.finishTest2= function(value){
+	
+	if(value==1){
+		return 1;
+	}
+	else{
+		return 5;
+	}
+}
 
 
 

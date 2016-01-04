@@ -7,6 +7,7 @@ function Main(){
 	var option3 = document.createElement("button");
 	var gameFlag=0;
 	var that= this;
+	var toggle= 1;
 
 	var ludoOption= document.createElement("button");
 	ludoOption.setAttribute("class","game");
@@ -28,9 +29,9 @@ function Main(){
 
 	mainboard.style.display="none";
 
-	option2.innerHTML=("3");
-	option3.innerHTML=("4");
-	option1.innerHTML=("2");
+	option2.innerHTML=("THREE");
+	option3.innerHTML=("FOUR");
+	option1.innerHTML=("TWO");
 
 	mainWrp.appendChild(option1);
 	mainWrp.appendChild(option2);
@@ -105,13 +106,17 @@ function Main(){
 
 		ludoOption.onclick= function(){
 			gameFlag= 4;
-			animate(ludoOption,snakeOption);
+			setDisplay();
+		
+			/*animate(ludoOption,snakeOption);*/
 			
 		
 		}
 		snakeOption.onclick=function(){
 			gameFlag= 1;
-			animate(snakeOption,ludoOption);
+			setDisplay();
+		
+			/*animate(snakeOption,ludoOption);*/
 		
 		}
 	}
@@ -164,5 +169,30 @@ function Main(){
 
 	},100);
 }
+
+	var vol= document.createElement("volume");
+	vol.setAttribute("class","volume");
+	wrap= document.getElementById("main-wrapper");
+	wrap.appendChild(vol);
+	vol.style.backgroundImage= "url(images/vol-on.png)";
+	vol.addEventListener('click',function(event){
+
+		if(toggle==1){
+			for(var i=1;i<3;i++){
+				document.getElementById("audio"+i).muted=true;
+			}
+			console.log("in volume");
+			toggle=0;	
+			vol.style.backgroundImage= "url(images/vol-off.png)";
+		}
+		else{
+			toggle=1;
+			for(var i=1;i<3;i++){
+				document.getElementById("audio"+i).muted=false;
+			}
+			vol.style.backgroundImage= "url(images/vol-on.png)";
+
+		}
+	});
 
 }

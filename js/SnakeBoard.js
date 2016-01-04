@@ -10,7 +10,7 @@ function SnakeBoard(){
 	container.appendChild(board);
 	
 	this.createBoard2 = function() {
-		wrap.style.backgroundImage= "url(images/snakebackground1.png)";
+		
 		wrap.style.backgroundRepeat= "no-repeat";
 		wrap.style.backgroundPosition= "center center";
 		var arr= [];

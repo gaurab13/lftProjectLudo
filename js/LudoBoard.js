@@ -57,24 +57,7 @@ function LudoBoard(){
 				  		if((j>8&&j<=13) && i==7){
 				  			arr[i][j].style.backgroundColor= "yellow";
 				  		}
-				  		/*if((i>=6&&i<=8)&&(j>=6&&j<=8)){
-				  			arr[i][j].style.backgroundColor= "#87CEFA";
-				  		}*/
-				  		/*if((count==17)||(count==20)||(count==62)||(count==65)){
-				  			arr[i][j].style.backgroundColor= "#FC062F";
-				  		}
-
-				  		if((count==26)||(count==29)||(count==71)||(count==74)){
-				  			arr[i][j].style.backgroundColor= "#00d11c";
-				  		}
-
-
-				  		if((count==152)||(count==155)||(count==197)||(count==200)){
-				  			arr[i][j].style.backgroundColor= "#00ad99";
-				  		}
-				  		if((count==161)||(count==164)||(count==206)||(count==209)){
-				  			arr[i][j].style.backgroundColor= "#FFFF66";
-				  		}*/
+				  		
 
 				  		if((i==6&&j==1)||(i==1&&j==8)||(i==13&&j==6)||(i==8&&j==13)){
 				  			arr[i][j].style.backgroundImage= "url(images/star.png)";

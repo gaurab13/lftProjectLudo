@@ -10,36 +10,56 @@ function SnakeLoop(){
 	var flag= new Flags();
 	var dragObj= null;
 	var l= new Ladders();
+	var c1=c2=c3=c4=1;
 
 	var setSnakeBoard=function(){
+		document.getElementById("status").style.visibility="hidden";
 		var wrap = document.getElementById("main-wrapper");
+		var selectorBox= document.getElementById("info-box");
+		selectorBox.style.display="block";
 		var info= document.getElementById("status");
 		info.style.display="none";
 		var item= [];
+		wrap.style.opacity= 0.3;
 		
 		for(var i=1;i<9;i++){
 			item[i]= document.createElement("div");
 			item[i].setAttribute("class","item");
 			item[i].setAttribute("id","item"+i);
 			wrap.appendChild(item[i]);
-			dragLadders(item[i],0);
 		}
-		var info= document.createElement("div");
-		info.setAttribute("id","infoSnake");
-		info.innerHTML="Have Fun Dragging the Snakes and Ladders and Designing your Own Board";
-		wrap.appendChild(info);
 
-		var info2= document.createElement("div");
-		info2.setAttribute("id","infoSnake2");
-		info2.innerHTML="Or choose the default Board";
-		wrap.appendChild(info2);
+		var drag= document.createElement("button");
+		drag.setAttribute("class","layoutSelector");
+		drag.setAttribute("id","editor");
+		drag.innerHTML="Layout Editor";
+		selectorBox.appendChild(drag);
+		drag.onclick= function(){
+			wrap.style.opacity=1;
+			selectorBox.style.display="none";
+			var elem=[];
+			for(var i=1;i<9;i++){
+			elem= document.getElementById("item"+i);
+			dragLadders(elem,0);
+			info.style.visibility="visible";
+		}
+		};
 
 		var defaultPosition= document.createElement("button");
+		defaultPosition.setAttribute("class","layoutSelector");
 		defaultPosition.setAttribute("id","defaultPosition");
-		defaultPosition.innerHTML="Set Default";
-		
-		defaultPosition.onclick= setDefaultPosition ;
-		wrap.appendChild(defaultPosition);	
+		defaultPosition.innerHTML="Default Board";
+		defaultPosition.addEventListener('click',function(event){
+			var elem=[];
+			for(var i=1;i<9;i++){
+			elem[i]= document.getElementById("item"+i);
+			dragLadders(elem,1);
+		}
+			setDefaultPosition();
+			info.style.visibility="visible";
+		});
+
+		selectorBox.appendChild(defaultPosition);	
 	}
 
 	var dragLadders= function(ladderObj,a){
@@ -111,10 +131,17 @@ function SnakeLoop(){
 		};
 	}
 
-	var setDefaultPosition= function(){
+	function setDefaultPosition(){
+		document.getElementById("main-wrapper").style.opacity=1;
+		document.getElementById("info-box").style.display="none";
 		var item= [];
 		console.log("clicked");
 		var itemInit= new InitialPosition();
+		var elem=[];;
+		for(var i=1;i<9;i++){
+			elem= document.getElementById("item"+i);
+			dragLadders(elem,1);
+		}
 		for( var i=1;i<9;i++){
 			item[i]= document.getElementById("item"+i);
 			var x= itemInit.initPosItem.child[i-1].x;
@@ -122,7 +149,7 @@ function SnakeLoop(){
 			item[i].style.left=x*tilewidth+450+"px";
 			item[i].style.top= y*tilewidth+60+"px";
 			
-			dragLadders(item[i],1);
+		
 
 			var xcordTest1= (parseInt(item[i].style.left)-450+l.itemPos.child[i-1].dx1)/45;
 			var xcordTest2= (parseInt(item[i].style.left)-450+l.itemPos.child[i-1].dx2)/45;
@@ -159,15 +186,16 @@ function SnakeLoop(){
 			l.itemPos.child[i-1].y2= ycord2;
 		}
 		
-		setDisplayOff();
 		
 	}
 
 
 	this.calldice= function(noOfPlayers,noOfToken){
-		setSnakeBoard();
-		var dice = document.getElementById("dice");
 
+		setSnakeBoard();
+
+		var dice = document.getElementById("dice");
+		document.getElementById("status").display="block";
 		dice.style.backgroundImage="url('images/one.png')";
 		number= noOfPlayers;
 		number2= noOfToken;
@@ -177,8 +205,9 @@ function SnakeLoop(){
 		showactive();
 		dice.addEventListener('click',function(event){
 			var initial=1;
-			setDisplayOff();
-
+			var audio= document.getElementById("audio1");
+			audio.play();
+			
 			var intervalid1 = setInterval(function(){
 				if(initial%6==1){
 					dice.style.backgroundImage="url('images/one.png')";
@@ -443,7 +472,7 @@ var replyClick= function(){
 
 		var intervalid = setInterval(function(){
 			var a = new Animate(board);
-			a.animate(element,number2,step);
+			var lastPosition=a.animate(element,number2,step);
 			currentstep++;
 			if(currentstep==step+1){
 				clearInterval(intervalid);
@@ -474,6 +503,29 @@ var replyClick= function(){
 						flag.blueToken.child[temp2-1].license=0;
 					}
 				}
+
+
+			var gameTest= a.finishTest2(lastPosition);
+			console.log("tested game is "+ gameTest);
+			if(gameTest==1){
+			
+				if(element.style.backgroundColor=="red"){				
+					gameWon("red");
+				}
+				if(element.style.backgroundColor=="yellow"){		
+					gameWon("yellow");
+				}
+				if(element.style.backgroundColor=="blue"){
+					gameWon("blue");
+				}
+				if(element.style.backgroundColor=="green"){
+					gameWon("green");
+				}
+
+
+			}
+
+
 				if(step==1||step==6){
 					controlflag--;
 				}
@@ -508,9 +560,11 @@ var replyClick= function(){
 			}
 			else{
 				if((left==x1)&&(top==y1)){
-					if((x2*tilewidth2)<=510){
+					if((x2*tilewidth)<=510){
 						element3.style.left= x2*tilewidth +"px";
 						element3.style.top= y2*tilewidth +"px";
+						var audio=document.getElementById("audio2");
+						audio.play();
 						console.log("HITTTT");
 					}
 				}
@@ -548,14 +602,38 @@ var replyClick= function(){
 		}
 	}
 
-	var setDisplayOff= function(){
-		var info1= document.getElementById("infoSnake");
-		var info2= document.getElementById("infoSnake2");
-		var defButton= document.getElementById("defaultPosition");
-
-		info1.style.display="none";
-		info2.style.display="none";
-		defButton.style.display="none";
+	var gameWon= function(win){
+		var winningToken=win;
+		//var winningDiv= document.createElement("div");
+		var wrap= document.getElementById("main-wrapper");
+		var winningDiv= document.getElementById("win");
+		document.getElementById("status").style.display="none";
+		winningDiv.style.display="block";
+		//winningDiv.setAttribute("id","win");
+		/*wrap.appendChild(winningDiv);*/
+		wrap.style.opacity= 0.3;
+		winningDiv.style.opacity=1;
+		document.getElementById("dice").style.display="none";
+		if(winningToken=="red"){
+			winningDiv.innerHTML="RED WINS";
+			winningDiv.style.color="red";
+			console.log("RED WINS");
+		}
+		if(winningToken=="blue"){
+			winningDiv.innerHTML="BLUE WINS";
+			winningDiv.style.color="blue";
+			console.log("BLUE WINS");
+		}
+		if(winningToken=="green"){
+			winningDiv.innerHTML="GREEN WINS";
+			winningDiv.style.color="green";
+			console.log("GREEN WINS");
+		}
+		if(winningToken=="yellow"){
+			winningDiv.innerHTML="YELLOW WINS";
+			winningDiv.style.color="yellow";
+			console.log("YELLOW WINS");
+		}
 	}
 
 

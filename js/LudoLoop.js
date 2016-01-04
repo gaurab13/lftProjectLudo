@@ -9,30 +9,24 @@ function LudoLoop(){
 	var number=0;
 	var number2=0;
 	var flag= new Flags();
-	var c1=c2=c3=c4=1;
-
+	var toggle= 1;
+	
 	this.calldice= function(noOfPlayers,noOfTokens){
 		var dice = document.getElementById("dice");
 		dice.style.backgroundImage="url('images/one.png')";
 		number= noOfPlayers;
 		number2= noOfTokens;
 		console.log("number of players"+ number);
-
-
-
-
 		console.log("ROLL THE DICE!!!");
+		var audio= document.getElementById("audio1");
 		
 		if(number2==4){
 			showactive();
 		}	
 		dice.addEventListener('click',function(event){
 			var initial=1;
-
-		var audio = new Audio('dice.wav');
-		audio.play();
-			
-				var intervalid1 = setInterval(function(){
+			audio.play();
+			var intervalid1 = setInterval(function(){
 					if(initial%6==1){
 						dice.style.backgroundImage="url('images/one.png')";
 					}
@@ -399,9 +393,6 @@ function LudoLoop(){
 	}
 
 
-
-
-	
 	var movetoken = function(element,value){
 
 		this.element=element;
@@ -443,19 +434,20 @@ function LudoLoop(){
 			
 			var gameTest= a.finishTest(lastPosition);
 			console.log("tested game is "+ gameTest);
-			if(gameTest==5){
+			if(gameTest==1){
 				var currentId= element.id;
 				console.log("last id is "+ currentId);
 				var l= currentId.length;
 				var last= currentId.charAt(l-1);
+				var c1=c2=c3=c4=1;
 				if(element.style.backgroundColor=="red"){
 					flag.redToken.child[last-1].finishflag=1;
 					for(var i= 0;i<4;i++){
-						if(flag.redToken.child[i]==1){
+						if(flag.redToken.child[i].finishflag==1){
 							c1++;
 						}
 					}
-					if(c1==1){
+					if(c1==5){
 						gameWon("red");
 					}
 				}
@@ -466,7 +458,7 @@ function LudoLoop(){
 							c2++;
 						}
 					}
-					if(c2==1){
+					if(c2==5){
 						gameWon("yellow");
 					}
 				}
@@ -477,7 +469,7 @@ function LudoLoop(){
 							c3++;
 						}
 					}
-					if(c3==1){
+					if(c3==5){
 						gameWon("blue");
 					}
 				}
@@ -488,7 +480,7 @@ function LudoLoop(){
 							c4++;
 						}
 					}
-					if(c4==1){
+					if(c4==5){
 						gameWon("green");
 					}
 				}
@@ -534,36 +526,34 @@ function LudoLoop(){
 			outer4.style.borderColor="#a3531e";
 			outer1.style.borderColor="red";
 			info.innerHTML= "Red's Turn to Click and Roll the Dice";
-			
+			/*info.style.color="red";*/
 		}
 		else if(activeindicator==2){
 			if(number==2){
 			outer1.style.borderColor="#a3531e";
-			//indicator1.style.backgroundColor="yellow";
+			
 			outer4.style.borderColor="yellow";
-			//info.style.backgroundColor="#yellow";
+			
 			info.innerHTML= "Yellow's Turn to Click and Roll the Dice";
 			}
 			else{
 			outer1.style.borderColor="#a3531e";
 			outer2.style.borderColor="green";
 			info.innerHTML= "Green's Turn to Click and Roll the Dice";
-			//indicator1.style.backgroundColor="green";
-			//info.style.backgroundColor="#00d11c";
 			}
 		}
 		else if(activeindicator==3){
 			outer2.style.borderColor="#a3531e";
-			//indicator1.style.backgroundColor="yellow";
+			
 			outer4.style.borderColor="yellow";
-			//info.style.backgroundColor="yellow";
+			
 			info.innerHTML= "Yellow's Turn to Click and Roll the Dice";
 		}
 		else if(activeindicator==4){
 			outer4.style.borderColor="#a3531e";
-			//indicator1.style.backgroundColor="blue";
+			
 			outer3.style.borderColor="blue";
-			//info.style.backgroundColor="blue";
+			
 			info.innerHTML= "Blue's Turn to Click and Roll the Dice";
 		}
 		else{	
@@ -579,12 +569,13 @@ function LudoLoop(){
 
 	var gameWon= function(win){
 		var winningToken=win;
-		var winningDiv= document.createElement("div");
+		//var winningDiv= document.createElement("div");
 		var wrap= document.getElementById("main-wrapper");
-		
+		var winningDiv= document.getElementById("win");
 
-		winningDiv.setAttribute("id","win");
-		wrap.appendChild(winningDiv);
+		winningDiv.style.display="block";
+		//winningDiv.setAttribute("id","win");
+		/*wrap.appendChild(winningDiv);*/
 		wrap.style.opacity= 0.3;
 		winningDiv.style.opacity=1;
 		document.getElementById("dice").style.display="none";
@@ -609,4 +600,31 @@ function LudoLoop(){
 			console.log("YELLOW WINS");
 		}
 	}
+
+	var vol= document.createElement("volume");
+	vol.setAttribute("class","volume");
+	wrap= document.getElementById("main-wrapper");
+	wrap.appendChild(vol);
+	vol.style.backgroundImage= "url(images/vol-on.png)";
+	vol.addEventListener('click',function(event){
+
+		if(toggle==1){
+			for(var i=1;i<3;i++){
+				document.getElementById("audio"+i).muted=true;
+			}
+			console.log("in volume");
+			toggle=0;	
+			vol.style.backgroundImage= "url(images/vol-off.png)";
+		}
+		else{
+			toggle=1;
+			for(var i=1;i<3;i++){
+				document.getElementById("audio"+i).muted=false;
+			}
+			vol.style.backgroundImage= "url(images/vol-on.png)";
+
+		}
+	});
+		
+	
 }
