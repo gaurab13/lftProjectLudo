@@ -6,12 +6,14 @@ function Animate(element) {
 	var tilewidth2=30;
 	var initPosition = new InitialPosition();
 	var routeno = new Route();
+	var audio= document.getElementById("audio2");
+	
 	
 this.animate= function(element1,val,step){
 	var diceValue= step;
 	var value =val;
 	var currentcolor= element1.style.backgroundColor;
-	var audio= document.getElementById("audio2");
+
 	if(value==1){		
 	var y= parseInt(element1.style.left)/tilewidth1;
 	var x= parseInt(element1.style.top)/tilewidth1;

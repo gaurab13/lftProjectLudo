@@ -1,6 +1,8 @@
-*{
-	font-family: 'Zorque',sans-serif;
+@font-face {
+    font-family: 'myFont';
+    src: url('zorque.ttf');
 }
+
 #main-wrapper{
 	width:100%;
 	height:592px;
@@ -68,34 +70,6 @@
 	
 }
 
-/*#triangle1{
-	border-left: 44px solid transparent;
-	border-right: 44px solid transparent;
-	border-top: 44px solid green;
-	left:180px;
-	top:180px;
-}
-#triangle2{
-	border-top: 44px solid transparent;
-	border-bottom: 44px solid transparent; 
-	border-right:44px solid yellow;
-	left:225px;
-	top:180px;
-}
-#triangle3{
-	border-left: 44px solid transparent;
-	border-right: 44px solid transparent;	
-	border-bottom: 44px solid blue;
-	left:180px;
-	top:225px;
-}
-#triangle4{
-	border-top: 44px solid transparent;
-	border-bottom: 44px solid transparent;	
-	border-left: 44px solid red;
-	left:180px;
-	top:180px;
-}*/
 #outercircle2{
 	left:295px;
 }
@@ -224,7 +198,7 @@ top:100px;
 	line-height: 40px;
 	border-radius:10%;
 	-webkit-text-stroke: 2px black;
- 
+ 	font-family: 'myFont',sans-serif;
    text-shadow:
        3px 3px 0 #fff,
      -1px -1px 0 #fff,  
@@ -234,7 +208,7 @@ top:100px;
 }
 .options-header{
 	font-size:44px;
-	font-family:'Zorque',sans-serif;
+	font-family:'myFont',sans-serif;
 	color:black;
 	padding-left:25%;
 	margin-top:120px;
@@ -280,7 +254,7 @@ top:100px;
       -1px 1px 0 #fff,
        1px 1px 0 #fff;
 	
-	font-family: 'Zorque',sans-serif;
+	font-family: 'myFont',sans-serif;
 }
 #ludo{
 	left:450px;
@@ -385,7 +359,7 @@ top:100px;
       -1px 1px 0 #fff,
        1px 1px 0 #fff;
 	
-	font-family: 'Zorque',sans-serif;
+	font-family: 'myFont',sans-serif;
 }
 #defaultPosition{
 		top:20px;
@@ -396,17 +370,6 @@ top:100px;
 	top:20px;
 }
 
-#restart{
-	width:50px;
-	height:30px;
-	position: absolute;
-	left:1250px;
-	top:20px;
-	background-color: red;
-	border:1px solid black;
-	display:none;
-	
-}
 
 .loading-percent{
 	font-size: 60px;
@@ -440,7 +403,7 @@ top:100px;
 #status{
 	font-size: 30px;
 	border:none;
-	font-family: 'Zorque',sans-serif;
+	font-family: 'myFont',sans-serif;
 }
 
 .info-box{
