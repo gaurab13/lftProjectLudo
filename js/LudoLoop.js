@@ -9,6 +9,7 @@ function LudoLoop(){
 	var number=0;
 	var number2=0;
 	var flag= new Flags();
+	var c1=c2=c3=c4=1;
 
 	this.calldice= function(noOfPlayers,noOfTokens){
 		var dice = document.getElementById("dice");
@@ -17,8 +18,6 @@ function LudoLoop(){
 		number2= noOfTokens;
 		console.log("number of players"+ number);
 
-		flag.testValue=500; 
-		console.log("the testflag is "+ flag.testValue);
 
 
 
@@ -29,6 +28,9 @@ function LudoLoop(){
 		}	
 		dice.addEventListener('click',function(event){
 			var initial=1;
+
+		var audio = new Audio('dice.wav');
+		audio.play();
 			
 				var intervalid1 = setInterval(function(){
 					if(initial%6==1){
@@ -411,14 +413,12 @@ function LudoLoop(){
 
 			
 			var a = new Animate(board);
-			a.animate(element,number2,step);
+			var lastPosition= a.animate(element,number2,step);
+			console.log("latest position"+lastPosition);
 			currentstep++;
 			if(currentstep==step+1){
-				clearInterval(intervalid);
-		
-				
-			var temp1 = a.hittestForRed(element,number2);
-			
+			clearInterval(intervalid);						
+			var temp1 = a.hittestForRed(element,number2);			
 			if(temp1!=0){
 			flag.redToken.child[temp1-1].outflag=0;
 			flag.redToken.child[temp1-1].license=0;
@@ -440,8 +440,63 @@ function LudoLoop(){
 			flag.yellowToken.child[temp4-1].outflag=0;
 			flag.yellowToken.child[temp4-1].license=0;
 			}
-			console.log("direct here"+temp4);
 			
+			var gameTest= a.finishTest(lastPosition);
+			console.log("tested game is "+ gameTest);
+			if(gameTest==5){
+				var currentId= element.id;
+				console.log("last id is "+ currentId);
+				var l= currentId.length;
+				var last= currentId.charAt(l-1);
+				if(element.style.backgroundColor=="red"){
+					flag.redToken.child[last-1].finishflag=1;
+					for(var i= 0;i<4;i++){
+						if(flag.redToken.child[i]==1){
+							c1++;
+						}
+					}
+					if(c1==1){
+						gameWon("red");
+					}
+				}
+				if(element.style.backgroundColor=="yellow"){
+					flag.yellowToken.child[last-1].finishflag=1;
+					for(var i= 0;i<4;i++){
+						if(flag.yellowToken.child[i]==1){
+							c2++;
+						}
+					}
+					if(c2==1){
+						gameWon("yellow");
+					}
+				}
+				if(element.style.backgroundColor=="blue"){
+					flag.blueToken.child[last-1].finishflag=1;
+					for(var i= 0;i<4;i++){
+						if(flag.blueToken.child[i]==1){
+							c3++;
+						}
+					}
+					if(c3==1){
+						gameWon("blue");
+					}
+				}
+				if(element.style.backgroundColor=="green"){
+					flag.greenToken.child[last-1].finishflag=1;
+					for(var i= 0;i<4;i++){
+						if(flag.greenToken.child[i]==1){
+							c4++;
+						}
+					}
+					if(c4==1){
+						gameWon("green");
+					}
+				}
+
+
+			}
+
+
 			
 				if(step==1||step==6){
 					controlflag--;
@@ -449,7 +504,6 @@ function LudoLoop(){
 				}
 				if (number2==4){
 					showactive();
-
 					}
 				}
 		},200);
@@ -523,4 +577,36 @@ function LudoLoop(){
 		return Math.floor(Math.random() * (7 - 1) + 1);
 	}
 
+	var gameWon= function(win){
+		var winningToken=win;
+		var winningDiv= document.createElement("div");
+		var wrap= document.getElementById("main-wrapper");
+		
+
+		winningDiv.setAttribute("id","win");
+		wrap.appendChild(winningDiv);
+		wrap.style.opacity= 0.3;
+		winningDiv.style.opacity=1;
+		document.getElementById("dice").style.display="none";
+		if(winningToken=="red"){
+			winningDiv.innerHTML="RED WINS";
+			winningDiv.style.color="red";
+			console.log("RED WINS");
+		}
+		if(winningToken=="blue"){
+			winningDiv.innerHTML="BLUE WINS";
+			winningDiv.style.color="blue";
+			console.log("BLUE WINS");
+		}
+		if(winningToken=="green"){
+			winningDiv.innerHTML="GREEN WINS";
+			winningDiv.style.color="green";
+			console.log("GREEN WINS");
+		}
+		if(winningToken=="yellow"){
+			winningDiv.innerHTML="YELLOW WINS";
+			winningDiv.style.color="yellow";
+			console.log("YELLOW WINS");
+		}
+	}
 }

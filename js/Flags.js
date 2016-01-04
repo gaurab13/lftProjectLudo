@@ -2,75 +2,91 @@ function Flags(){
 	this.redToken = {
 			child: [{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0	
 				},
 				{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0	
 				},
 				{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0	
 				},
 				{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0	
 				}]
 		}
 	this.greenToken = {
-				 child: [{
-				 license: 0,
-				outflag: 0
+				child: [{
+				license: 0,
+				outflag: 0,
+				finishflag:0	
 				},
 				{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0		
 				},
 				{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0		
 				},
 				{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0		
 				}]
 
 		}
 	this.blueToken = {
 				child: [{
 				license: 0,
-				outflag: 0
+				outflag: 0,
+				finishflag:0	
 				},
 				{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0		
 				},
 				{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0		
 				},
 				{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0		
 				}]
 
 		}
 	this.yellowToken = {
 				child: [{
 				license: 0,
-				outflag: 0
+				outflag: 0,
+				finishflag:0	
 				},
 				{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0		
 				},
 				{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0	
 				},
 				{
 				license: 0,
-				outflag: 0	
+				outflag: 0,
+				finishflag:0		
 				}]
 
 		}

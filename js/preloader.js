@@ -6,6 +6,7 @@ function Preloader() {
   this.init = function() {
     var status= document.getElementById("status");
     status.style.display="none";
+    document.getElementById("options-header").style.display="none";
     document.getElementById("main-container").style.display="none";
     load= document.getElementsByClassName("loading-percent")[0];
     load.innerHTML= "0%";

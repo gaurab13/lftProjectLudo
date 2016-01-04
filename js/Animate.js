@@ -36,6 +36,7 @@ this.animate= function(element1,val,step){
 						element1.style.left= parseInt(tile.style.left)+"px";
 						element1.style.top= parseInt(tile.style.top)+"px";
 						}
+					
 					}
 					else{
 						if (currentcolor=="red"){
@@ -47,7 +48,9 @@ this.animate= function(element1,val,step){
 							var tile = document.getElementById(nextindex);
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
+							return nextindex;
 							}
+
 						}
 						if (currentcolor=="green"){
 							
@@ -58,6 +61,7 @@ this.animate= function(element1,val,step){
 							var tile = document.getElementById(nextindex);
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
+							return nextindex;
 							}
 						}
 						if (currentcolor=="yellow"){
@@ -70,6 +74,7 @@ this.animate= function(element1,val,step){
 							
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
+							return nextindex;
 							}
 						}
 						if (currentcolor=="blue"){
@@ -82,6 +87,7 @@ this.animate= function(element1,val,step){
 							
 							element1.style.left= parseInt(tile.style.left)+"px";
 							element1.style.top= parseInt(tile.style.top)+"px";
+							return nextindex;
 							}
 						}
 					}
@@ -252,6 +258,15 @@ this.hittestForYellow=function(element2,num){
 
 }
 
+this.finishTest= function(value){
+	
+	if((value==112)||(value==114)||(value==98)||(value==128)){
+		return 1;
+	}
+	else{
+		return 5;
+	}
+}
 
 
 
